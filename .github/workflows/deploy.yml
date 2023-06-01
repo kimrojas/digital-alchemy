@@ -36,4 +36,5 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3.9.0
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: digital-alchemy/book/_build/html
+        publish_dir: ./book/_build/html
+        cname: kimrojas.github.io/digital-alchemy
