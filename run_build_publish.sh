@@ -19,6 +19,6 @@ fi
 
 #echo "RUN"
 
-ghp-import -n -p -f ./book/_build/html
+#ghp-import -n -p -f ./book/_build/html
 
 #file:///home/krojas/jupyter_book/quantum-espresso-book/book/_build/html/index.html

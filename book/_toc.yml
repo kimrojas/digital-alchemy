@@ -6,46 +6,17 @@ root: intro
 parts:
 - caption: Tutorials
   chapters:
-  - caption: Quantum Espresso
-    chapters:
+  - file: docs/tutorials/qe/qe_index
+    sections:
     - file: docs/tutorials/qe/qe_intro
-  - caption: Catlearn
-    chapters:
-    - file: docs/tutorials/catlearn/catlearn_intro
-  - caption: ASE
-    chapters:
-    - file: docs/tutorials/ase/ase_intro
+    - file: docs/tutorials/qe/qe_example_01
 
-  
-
-# parts:
-# - caption: Installation
-#   chapters:
-#   - file: docs/python-env
-#   - file: docs/dftbplus-install
-#     # sections:
-#     #   - file: docs/dftbplus-compile
-#     #   - file: docs/dftbplus-conda
-#   - file: docs/gofee-install
-# - caption: Tutorial
-#   chapters:
-#   - file: docs/usage-overview
-#   - file: docs/usage-dftb
-#     sections:
-#     - file: docs/usage-t01
-#     - file: docs/usage-t02
-#     - file: docs/usage-t03
-#   - file: docs/usage-gofee
-#     sections:
-#     - file: docs/usage-t04
-#     - file: docs/usage-t05
-#     - file: docs/usage-t06
-#   - file: docs/usage-gofee-dftb
-#     sections:
-#     - file: docs/usage-t10
-#     - file: docs/usage-t11
-#     - file: docs/usage-t12
-# - caption: Benchmark
-#   chapters:
-#   - file: docs/benchmark-parallelization
+- caption: Recipes
+  chapters:
+  - file: docs/recipes/qe/qe_index
+    sections:
+    - file: docs/recipes/qe/qe-squid
+    - file: docs/recipes/qe/qe-ohtaka
+    - file: docs/recipes/qe/qe-smith
+    
 
