@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>GOFEE Installation &#8212; GOFEE Tutorial</title>
+    <title>Quantum Espresso - SMITH &#8212; GOFEE Tutorial</title>
   
   
   
@@ -170,7 +170,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="qe_index.html">GOFEE Installation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="qe-squid.html">GOFEE Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="qe-ohtaka.html">GOFEE Installation</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">GOFEE Installation</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Quantum Espresso - SMITH</a></li>
 </ul>
 </li>
 </ul>
@@ -356,7 +356,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>GOFEE Installation</h1>
+    <h1>Quantum Espresso - SMITH</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -367,11 +367,14 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-procedure">Installation procedure</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-the-file">Download the file</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-gofee-package">Build GOFEE package</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-activation-file">Create an activation file</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-installation-directory">Setup installation directory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-the-installation-file">Download the installation file</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-modules">Load the required modules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-and-install">Configure and install</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finalize-path">Finalize PATH</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-pseudopotentials">Get the pseudopotentials</a></li>
 </ul>
             </nav>
         </div>
@@ -383,34 +386,72 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="gofee-installation">
-<h1>GOFEE Installation<a class="headerlink" href="#gofee-installation" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="quantum-espresso-smith">
+<h1>Quantum Espresso - SMITH<a class="headerlink" href="#quantum-espresso-smith" title="Permalink to this heading">#</a></h1>
+<blockquote class="epigraph">
+<div><p>This recipe shows how to install quantum espresso on the smith cluster.</p>
+</div></blockquote>
 <section id="installation-procedure">
 <h2>Installation procedure<a class="headerlink" href="#installation-procedure" title="Permalink to this heading">#</a></h2>
-<section id="download-the-file">
-<h3>Download the file<a class="headerlink" href="#download-the-file" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/tutorial_files/apps
-wget<span class="w"> </span>http://grendel-www.cscaa.dk/mkb/_downloads/694ca887012ad412602f2a45ee7b2ea2/gofee_stable.tar.gz
-tar<span class="w"> </span>zxvf<span class="w"> </span>gofee_stable.tar.gz
+<section id="setup-installation-directory">
+<h3>Setup installation directory<a class="headerlink" href="#setup-installation-directory" title="Permalink to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create installation directory </span>
+mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$HOME</span>/apps/qe<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span><span class="nv">$HOME</span>/apps/qe
 </pre></div>
 </div>
 </section>
-<section id="build-gofee-package">
-<h3>Build GOFEE package<a class="headerlink" href="#build-gofee-package" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>gofee-master
-./build_code
+<section id="download-the-installation-file">
+<h3>Download the installation file<a class="headerlink" href="#download-the-installation-file" title="Permalink to this heading">#</a></h3>
+<p>We download the installation file from the <a class="reference external" href="https://gitlab.com/QEF/q-e/-/tags">Quantum Espresso repository</a>. As of the moment of writing, the latest version is <a class="reference external" href="https://gitlab.com/QEF/q-e/-/archive/qe-7.2/q-e-qe-7.2.tar.gz">qe-7.2</a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download and extract the installation file</span>
+wget<span class="w"> </span>-c<span class="w"> </span>https://gitlab.com/QEF/q-e/-/archive/qe-7.2/q-e-qe-7.2.tar.gz
+tar<span class="w"> </span>zxvf<span class="w"> </span>q-e-qe-7.2.tar.gz
+<span class="nb">cd</span><span class="w"> </span>q-e-qe-7.2
 </pre></div>
 </div>
 </section>
-<section id="create-an-activation-file">
-<h3>Create an activation file<a class="headerlink" href="#create-an-activation-file" title="Permalink to this heading">#</a></h3>
-<p>Create a gofee activator <code class="docutils literal notranslate"><span class="pre">activate_gofee.sh</span></code> with the following contents:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="nv">installdir</span><span class="o">=</span>/home/krojas/tutorial_files/apps/gofee-master
-<span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="si">${</span><span class="nv">installdir</span><span class="si">}</span>:<span class="nv">$PYTHONPATH</span>
+<section id="load-the-required-modules">
+<h3>Load the required modules<a class="headerlink" href="#load-the-required-modules" title="Permalink to this heading">#</a></h3>
+<p>Intel compiler, MPI and MKL are already installed on the cluster. We just need to load the corresponding modules.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load version 2020.2.254</span>
+module<span class="w"> </span>load<span class="w"> </span>intel/2020.2.254<span class="w"> </span>intelmpi/2020.2.254
 </pre></div>
 </div>
 </section>
+<section id="configure-and-install">
+<h3>Configure and install<a class="headerlink" href="#configure-and-install" title="Permalink to this heading">#</a></h3>
+<p>We just need to setup the scalapack settings with configure. Here we compile only the pwall since we are not interested in the other executables.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./configure<span class="w"> </span>--with-scalapack<span class="o">=</span>intel
+make<span class="w"> </span>-j8<span class="w"> </span>pwall
+</pre></div>
+</div>
+<p>The executable files should be in the <code class="docutils literal notranslate"><span class="pre">bin</span></code> directory.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">$HOME</span>/apps/qe/q-e-qe-7.2/bin
+</pre></div>
+</div>
+</section>
+<section id="finalize-path">
+<h3>Finalize PATH<a class="headerlink" href="#finalize-path" title="Permalink to this heading">#</a></h3>
+<p>We need to add the executables to the environment PATH variable. We can do this by adding the following line to the <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> file.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Export the path to the executables</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$HOME</span>/apps/qe/q-e-qe-7.2/bin:<span class="nv">$PATH</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="get-the-pseudopotentials">
+<h2>Get the pseudopotentials<a class="headerlink" href="#get-the-pseudopotentials" title="Permalink to this heading">#</a></h2>
+<p>There are many pseudopotentials available for Quantum Espresso. We will use the ones from the <a class="reference external" href="https://www.physics.rutgers.edu/gbrv/">GBRV library</a>. We can download the pseudopotentials with the following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="nv">$HOME</span>/apps/qe
+mkdir<span class="w"> </span>-p<span class="w"> </span>pseudo<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>pseudo
+wget<span class="w"> </span>https://www.physics.rutgers.edu/gbrv/all_pbe_UPF_v1.5.tar.gz
+mkdir<span class="w"> </span>-p<span class="w"> </span>gbrv_pbe<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>tar<span class="w"> </span>zxvf<span class="w"> </span>all_pbe_UPF_v1.5.tar.gz<span class="w"> </span>-C<span class="w"> </span>gbrv_pbe
+</pre></div>
+</div>
+<p>Path to the pseudopotentials is:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">$HOME</span>/apps/qe/pseudo/gbrv_pbe
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -473,11 +514,14 @@ tar<span class="w"> </span>zxvf<span class="w"> </span>gofee_stable.tar.gz
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-procedure">Installation procedure</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-the-file">Download the file</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-gofee-package">Build GOFEE package</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-activation-file">Create an activation file</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-installation-directory">Setup installation directory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-the-installation-file">Download the installation file</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-modules">Load the required modules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-and-install">Configure and install</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finalize-path">Finalize PATH</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-pseudopotentials">Get the pseudopotentials</a></li>
 </ul>
   </nav></div>
 
