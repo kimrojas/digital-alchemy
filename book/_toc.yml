@@ -13,6 +13,9 @@ parts:
 
 - caption: Recipes
   chapters:
+  - file: docs/recipes/conda/conda-index
+    sections:
+    - file: docs/recipes/conda/conda-squid
   - file: docs/recipes/qe/qe_index
     sections:
     - file: docs/recipes/qe/qe-squid
