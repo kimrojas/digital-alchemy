@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>C6H6 system - multirun &#8212; GOFEE Tutorial</title>
+    <title>TEMPLATE FILE &#8212; GOFEE Tutorial</title>
   
   
   
@@ -63,7 +63,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/usage-t06';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/TEMPLATE';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -243,7 +243,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/kimrojas/digital-alchemy/issues/new?title=Issue%20on%20page%20%2Fdocs/usage-t06.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/kimrojas/digital-alchemy/issues/new?title=Issue%20on%20page%20%2Fdocs/TEMPLATE.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -273,7 +273,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/docs/usage-t06.md" target="_blank"
+      <li><a href="../_sources/docs/TEMPLATE.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -342,7 +342,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -353,11 +355,35 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>C6H6 system - multirun</h1>
+    <h1>TEMPLATE FILE</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-1">Section 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsection-1-1">Subsection 1.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsection-1-2">Subsection 1.2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2">Section 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsection-2-1">Subsection 2.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsection-2-2">Subsection 2.2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources">Additional Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table">Table</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-blocks">Special blocks</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -367,69 +393,123 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="c6h6-system-multirun">
-<h1>C6H6 system - multirun<a class="headerlink" href="#c6h6-system-multirun" title="Permalink to this heading">#</a></h1>
-<p>A parallelized structure search calculation for a C6H6 system using GOFEE which are run simultaneously. Files are available in the <code class="docutils literal notranslate"><span class="pre">test-suite</span></code> provided.</p>
-<p>We keep the parallelization (as before) and we create multiple runs to increase the success rate. We do this by creating a job array by using the <code class="docutils literal notranslate"><span class="pre">-t</span></code> option of the jobscript.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="c1">#$ -S /bin/bash</span>
-<span class="c1">#$ -cwd</span>
-<span class="c1">#$ -q xs2.q</span>
-<span class="c1">#$ -pe x16 16</span>
-<span class="c1">#$ -j y</span>
-<span class="c1">#$ -N dftb_c6h6_multirun</span>
-<span class="c1">#$ -t 1-3</span>
+  <section class="tex2jax_ignore mathjax_ignore" id="template-file">
+<h1>TEMPLATE FILE<a class="headerlink" href="#template-file" title="Permalink to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>[Introduction paragraph]</p>
+</section>
+<section id="section-1">
+<h2>Section 1<a class="headerlink" href="#section-1" title="Permalink to this heading">#</a></h2>
+<p>[Content of section 1]</p>
+<section id="subsection-1-1">
+<h3>Subsection 1.1<a class="headerlink" href="#subsection-1-1" title="Permalink to this heading">#</a></h3>
+<p>[Content of subsection 1.1]</p>
+</section>
+<section id="subsection-1-2">
+<h3>Subsection 1.2<a class="headerlink" href="#subsection-1-2" title="Permalink to this heading">#</a></h3>
+<p>[Content of subsection 1.2]</p>
+</section>
+</section>
+<section id="section-2">
+<h2>Section 2<a class="headerlink" href="#section-2" title="Permalink to this heading">#</a></h2>
+<p>[Content of section 2]</p>
+<section id="subsection-2-1">
+<h3>Subsection 2.1<a class="headerlink" href="#subsection-2-1" title="Permalink to this heading">#</a></h3>
+<p>[Content of subsection 2.1]</p>
+</section>
+<section id="subsection-2-2">
+<h3>Subsection 2.2<a class="headerlink" href="#subsection-2-2" title="Permalink to this heading">#</a></h3>
+<p>[Content of subsection 2.2]</p>
+</section>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
+<p>[Conclusion paragraph]</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://www.example.com">Reference 1</a></p></li>
+<li><p><a class="reference external" href="https://www.example.com">Reference 2</a></p></li>
+<li><p><a class="reference external" href="https://www.example.com">Reference 3</a></p></li>
+</ol>
+</section>
+<section id="additional-resources">
+<h2>Additional Resources<a class="headerlink" href="#additional-resources" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.example.com">Link to additional resource 1</a></p></li>
+<li><p><a class="reference external" href="https://www.example.com">Link to additional resource 2</a></p></li>
+</ul>
+</section>
+<section id="table">
+<h2>Table<a class="headerlink" href="#table" title="Permalink to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Column 1 Header</p></th>
+<th class="head"><p>Column 2 Header</p></th>
+<th class="head"><p>Column 3 Header</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Row 1 Cell 1</p></td>
+<td><p>Row 1 Cell 2</p></td>
+<td><p>Row 1 Cell 3</p></td>
+</tr>
+<tr class="row-odd"><td><p>Row 2 Cell 1</p></td>
+<td><p>Row 2 Cell 2</p></td>
+<td><p>Row 2 Cell 3</p></td>
+</tr>
+<tr class="row-even"><td><p>Row 3 Cell 1</p></td>
+<td><p>Row 3 Cell 2</p></td>
+<td><p>Row 3 Cell 3</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="code">
+<h2>Code<a class="headerlink" href="#code" title="Permalink to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">number</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">factorial</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The factorial of </span><span class="si">{</span><span class="n">number</span><span class="si">}</span><span class="s2"> is: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The input file is the same as in the previous case, but we change the jobscript.</p>
-<p><strong>JOBSCRIPT</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="c1">#$ -S /bin/bash</span>
-<span class="c1">#$ -cwd</span>
-<span class="c1">#$ -q xs2.q</span>
-<span class="c1">#$ -pe x16 16</span>
-<span class="c1">#$ -j y</span>
-<span class="c1">#$ -N dftb_c6h6_multirun</span>
-<span class="c1">#$ -t 1-3</span>
-
-<span class="c1"># --- LOAD MODULES ---</span>
-module<span class="w"> </span>load<span class="w"> </span>cmake/3.18.3
-module<span class="w"> </span>load<span class="w"> </span>intel/2020.2.254
-module<span class="w"> </span>load<span class="w"> </span>intelmpi/2020.2.254
-module<span class="w"> </span>load<span class="w"> </span>python/3.8
-
-<span class="c1"># --- ACTIVATE PYTHON/CONDA ENVIRONMENT ---</span>
-<span class="nb">source</span><span class="w"> </span>activate<span class="w"> </span>tutorial
-
-<span class="c1"># --- ACTIVATE DFTB+ / GOFEE ---</span>
-<span class="nv">scripts_dir</span><span class="o">=</span>~/tutorial_files/test-suite/scripts
-<span class="nb">source</span><span class="w"> </span><span class="si">${</span><span class="nv">scripts_dir</span><span class="si">}</span>/activate-dftb.sh
-<span class="nb">source</span><span class="w"> </span><span class="si">${</span><span class="nv">scripts_dir</span><span class="si">}</span>/activate-gofee.sh
-
-<span class="c1"># --- SET NODE ENVIRONMENT ---</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">I_MPI_PIN</span><span class="o">=</span><span class="m">1</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">1</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">I_MPI_FABRICS</span><span class="o">=</span>shm:ofi
-cat<span class="w"> </span><span class="nv">$PE_HOSTFILE</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ print $1&quot;:&quot;$2/ENVIRON[&quot;OMP_NUM_THREADS&quot;] }&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>hostfile.<span class="nv">$JOB_ID</span>
-
-
-<span class="c1"># --- START CALCULATION ---</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;========= Job started  at `date` ==========&quot;</span>
-
-<span class="nv">PYTHONFILE</span><span class="o">=</span><span class="s1">&#39;input_c6h6_multirun.py&#39;</span>
-<span class="nv">WORKDIR</span><span class="o">=</span><span class="s2">&quot;RUNS/run_</span><span class="si">${</span><span class="nv">SGE_TASK_ID</span><span class="si">}</span><span class="s2">&quot;</span>
-
-mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$WORKDIR</span>
-cp<span class="w"> </span><span class="nv">$PYTHONFILE</span><span class="w"> </span><span class="nv">$WORKDIR</span>
-<span class="nb">cd</span><span class="w"> </span><span class="nv">$WORKDIR</span>
-
-mpirun<span class="w"> </span>-np<span class="w"> </span><span class="nv">$NSLOTS</span><span class="w"> </span>python<span class="w"> </span><span class="si">${</span><span class="nv">PYTHONFILE</span><span class="si">}</span><span class="w"> </span>
-
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;========= Job finished at `date` ==========&quot;</span>
-
-rm<span class="w"> </span>-f<span class="w"> </span>hostfile.<span class="nv">$JOB_ID</span>
-</pre></div>
+</section>
+<section id="special-blocks">
+<h2>Special blocks<a class="headerlink" href="#special-blocks" title="Permalink to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Here is a note!</p>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Here’s a warning!</p>
+</div>
+<div class="admonition-here-s-your-admonition admonition">
+<p class="admonition-title">Here’s your admonition</p>
+<p>Here’s the admonition content</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">This admonition was styled…</p>
+<p>With a tip class!</p>
+</div>
+<blockquote class="epigraph">
+<div><p>Here is a cool quotation.</p>
+<p class="attribution">—Jo the Jovyan</p>
+</div></blockquote>
+<dl class="simple glossary">
+<dt id="term-Term-one">Term one<a class="headerlink" href="#term-Term-one" title="Permalink to this term">#</a></dt><dd><p>An indented explanation of term 1</p>
+</dd>
+<dt id="term-A-second-term">A second term<a class="headerlink" href="#term-A-second-term" title="Permalink to this term">#</a></dt><dd><p>An indented explanation of term2</p>
+</dd>
+</dl>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -472,6 +552,36 @@ rm<span class="w"> </span>-f<span class="w"> </span>hostfile.<span class="nv">$J
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-1">Section 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsection-1-1">Subsection 1.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsection-1-2">Subsection 1.2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2">Section 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsection-2-1">Subsection 2.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsection-2-2">Subsection 2.2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources">Additional Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table">Table</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-blocks">Special blocks</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
