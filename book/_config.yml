@@ -36,7 +36,8 @@ html:
   only_build_toc_files: true
   use_issues_button: true
   use_repository_button: true
-  favion: "images/logo/logo.png"
+  favicon: "images/logo/icons8-atom-48.png"
+  
 
 
 sphinx:

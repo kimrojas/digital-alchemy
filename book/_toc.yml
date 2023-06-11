@@ -21,5 +21,8 @@ parts:
     - file: docs/recipes/qe/qe-squid
     - file: docs/recipes/qe/qe-ohtaka
     - file: docs/recipes/qe/qe-smith
-    
+  - file: docs/recipes/catlearn/catlearn-index
+    sections: 
+    - file: docs/recipes/catlearn/catlearn-squid
+
 
