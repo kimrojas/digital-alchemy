@@ -6,10 +6,13 @@ root: docs/basic/intro
 parts:
 - caption: Tutorials
   chapters:
-  - file: docs/tutorials/qe/qe_index
+  # - file: docs/tutorials/qe/qe_index
+  #   sections:
+  #   - file: docs/tutorials/qe/qe_intro
+  #   - file: docs/tutorials/qe/qe_example_01
+  - file: docs/tutorials/catlearn/catlearn_intro
     sections:
-    - file: docs/tutorials/qe/qe_intro
-    - file: docs/tutorials/qe/qe_example_01
+    - file: docs/tutorials/catlearn/catlearn-example-01-squid
 
 - caption: Recipes
   chapters:
@@ -18,8 +21,8 @@ parts:
     - file: docs/recipes/conda/conda-squid
   - file: docs/recipes/qe/qe_index
     sections:
-    - file: docs/recipes/qe/qe-squid
-    - file: docs/recipes/qe/qe-ohtaka
+    # - file: docs/recipes/qe/qe-squid
+    # - file: docs/recipes/qe/qe-ohtaka
     - file: docs/recipes/qe/qe-smith
   - file: docs/recipes/catlearn/catlearn-index
     sections: 

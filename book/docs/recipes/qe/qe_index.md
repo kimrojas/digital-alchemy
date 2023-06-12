@@ -1,4 +1,4 @@
-# Quantum Espresso Installation
+# Quantum Espresso
 
 ## Introduction
 
