@@ -1,4 +1,5 @@
-# Catlearn - Introduction
+# Catlearn
+
 ## Introduction
 
 [Introduction paragraph]

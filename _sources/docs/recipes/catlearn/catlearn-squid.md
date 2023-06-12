@@ -21,10 +21,10 @@ The `BaseCPU/2023` module contains the intel compilers, MPI, and MKL libraries.
 module load BaseCPU/2023
 ```
 
-### Create a conda environment
+### **Create a conda environment**
 
 ```bash
-conda create -n catlearn -c conda-forge python=3.10 pip -y
+conda create -n catlearn python=3.10 pip
 
 # Check if the environment is created
 conda env list | grep catlearn
@@ -59,7 +59,7 @@ tar zxvf v0.6.2.tar.gz
 conda activate catlearn
 
 # Install catlearn
-pip install -v -e ./CatLearn-0.6.2
+pip install -v ./CatLearn-0.6.2
 ```
 
 ---

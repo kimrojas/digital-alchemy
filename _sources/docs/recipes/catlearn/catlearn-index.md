@@ -1,4 +1,4 @@
-# Catlearn - Index
+# Catlearn
 
 ## Introduction
 
