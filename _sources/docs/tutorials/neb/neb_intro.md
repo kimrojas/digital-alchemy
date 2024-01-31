@@ -61,10 +61,11 @@ In this example, a Au atoms will diffuse from one hollow site to another hollow 
 ```
 
 ```{image} Al12Au_final.png
-:alt: Initial
+:alt: Final
 :width: 200px
 :align: right
 ```
+
 
 #### Input file
 
