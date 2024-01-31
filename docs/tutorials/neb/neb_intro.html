@@ -1,0 +1,882 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Nudge elastic band (NEB) method &#8212; GOFEE Tutorial</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css?v=690d06d5" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/tutorials/neb/neb_intro';</script>
+    <link rel="icon" href="../../../_static/icons8-atom-48.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../basic/intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="GOFEE Tutorial - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="GOFEE Tutorial - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../basic/intro.html">
+                    Digital Alchemy
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../catlearn/catlearn_intro.html">Catlearn</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../catlearn/catlearn-example-01-squid.html">SQUID: Example 01</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Recipes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../recipes/conda/conda-index.html">CONDA</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../recipes/conda/conda-squid.html">CONDA - SQUID</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../recipes/qe/qe_index.html">Quantum Espresso</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../recipes/qe/qe-smith.html">Quantum Espresso - SMITH</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../recipes/catlearn/catlearn-index.html">Catlearn</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../recipes/catlearn/catlearn-squid.html">Catlearn - SQUID</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/kimrojas/digital-alchemy" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/kimrojas/digital-alchemy/issues/new?title=Issue%20on%20page%20%2Fdocs/tutorials/neb/neb_intro.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/docs/tutorials/neb/neb_intro.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Nudge elastic band (NEB) method</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-a-introduction-to-neb-method-tutorial">Make a introduction to NEB method tutorial</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pathway-interpolation">Pathway Interpolation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpolator">Interpolator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output-files">Output files</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neb-via-quantum-espresso">NEB via Quantum Espresso</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-au-diffusion">Example: Au diffusion</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#input-file">Input file</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#job-submission">Job submission</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#parallelization">parallelization</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#idpp-usage">IDPP usage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neb-via-ase">NEB via ASE</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neb-via-catlearn">NEB via Catlearn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="nudge-elastic-band-neb-method">
+<h1>Nudge elastic band (NEB) method<a class="headerlink" href="#nudge-elastic-band-neb-method" title="Link to this heading">#</a></h1>
+<section id="make-a-introduction-to-neb-method-tutorial">
+<h2>Make a introduction to NEB method tutorial<a class="headerlink" href="#make-a-introduction-to-neb-method-tutorial" title="Link to this heading">#</a></h2>
+<p>In this section, we will introduce the NEB method. Specifically, we will talk about:</p>
+<ul class="simple">
+<li><p>Path Interpolation</p></li>
+<li><p>NEB via Quantum Espresso</p></li>
+<li><p>NEB via ASE</p></li>
+<li><p>Machine learning (ML) NEB via Catlearn</p></li>
+</ul>
+</section>
+<section id="pathway-interpolation">
+<h2>Pathway Interpolation<a class="headerlink" href="#pathway-interpolation" title="Link to this heading">#</a></h2>
+<p>Before starting with the NEB calculations, we need to prepare the most important input file for NEB, which is the initial pathway.</p>
+<p>The initial pathway is very important in NEB. A good pathway will give you a good initial guess of the minimum energy pathway (MEP). A bad pathway will give you a bad initial guess of the MEP. In the latter case, the NEB method will not converge to the MEP. A good pathway can also reduce the number of iterations needed to converge to the MEP leading to a faster calculation.</p>
+<p>There are two ways to generate a pathway:</p>
+<ul class="simple">
+<li><p>Manual (do it yourself)</p></li>
+<li><p>Automatic via Linear Interpolation - This is the most common way to generate a pathway</p></li>
+<li><p>Automatic via <code class="docutils literal notranslate"><span class="pre">idpp</span></code> - Somehow a better pathway generator compared to linear interpolation. More details about it here:</p>
+<ul>
+<li><p><a class="reference external" href="https://wiki.fysik.dtu.dk/ase/tutorials/neb/idpp.html">https://wiki.fysik.dtu.dk/ase/tutorials/neb/idpp.html</a></p></li>
+<li><p><a class="reference external" href="https://doi.org/10.1063/1.4878664">https://doi.org/10.1063/1.4878664</a></p></li>
+</ul>
+</li>
+</ul>
+<section id="interpolator">
+<h3>Interpolator<a class="headerlink" href="#interpolator" title="Link to this heading">#</a></h3>
+<p>For the purpose of this tutorial, we have a script that can generate a pathway for you. This script is called <a class="reference external" href="https://%5Bwww.google.com%5D(https://github.com/kimrojas/digital-alchemy/tree/main/book/files/neb_tutorial/au_diffusion/00_idpp2espresso)"><code class="docutils literal notranslate"><span class="pre">image_generator.py</span></code></a></p>
+<p>To use this script, you need to have the following:</p>
+<ol class="arabic simple">
+<li><p>Initial image (ASE readable file)</p></li>
+<li><p>Final image (ASE readable file)</p></li>
+<li><p>Total number of images (integer)</p></li>
+</ol>
+<p>Just run it like this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>image_generator.py<span class="w"> </span>-i<span class="w"> </span>initial_image.xyz<span class="w"> </span>-f<span class="w"> </span>final_image.xyz<span class="w"> </span>-ni<span class="w"> </span><span class="m">5</span><span class="w"> </span>-m<span class="w"> </span>idpp
+<span class="c1"># iddpp can be replaced by linear</span>
+</pre></div>
+</div>
+</section>
+<section id="output-files">
+<h3>Output files<a class="headerlink" href="#output-files" title="Link to this heading">#</a></h3>
+<p>This will generate two files:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pathway.traj</span></code></p>
+<ul class="simple">
+<li><p>This is a trajectory file that contains the initial, intermediate, and final images (total of 5 images (with 3 intermediate images)).</p></li>
+<li><p>Useful for doing the NEB with ASE or Catlearn</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pathway.espresso-neb</span></code></p>
+<ul class="simple">
+<li><p>This is a pathway file that can be copy-pasted to the Quantum Espresso input file for <code class="docutils literal notranslate"><span class="pre">neb.x</span></code></p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<section id="neb-via-quantum-espresso">
+<h2>NEB via Quantum Espresso<a class="headerlink" href="#neb-via-quantum-espresso" title="Link to this heading">#</a></h2>
+<p>Quantum Espresso already has a NEB implementation called <code class="docutils literal notranslate"><span class="pre">neb.x</span></code>. You can simply build it using the same procedure as building the <code class="docutils literal notranslate"><span class="pre">pw.x</span></code>.</p>
+<section id="example-au-diffusion">
+<h3>Example: Au diffusion<a class="headerlink" href="#example-au-diffusion" title="Link to this heading">#</a></h3>
+<p>In this example, a Au atoms will diffuse from one hollow site to another hollow site on an Al(111) surface. The initial and final images are shown below:</p>
+<img src="Al12Au_initial.png" alt="Initial Image" height="200">
+<img src="Al12Au_final.png" alt="Final Image" height="200">
+<section id="input-file">
+<h4>Input file<a class="headerlink" href="#input-file" title="Link to this heading">#</a></h4>
+<p>An example input file for <code class="docutils literal notranslate"><span class="pre">neb.x</span></code> is shown below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BEGIN</span>
+<span class="n">BEGIN_PATH_INPUT</span>
+<span class="o">&amp;</span><span class="n">PATH</span>
+    <span class="n">restart_mode</span>      <span class="o">=</span> <span class="s2">&quot;restart&quot;</span>
+    <span class="n">string_method</span>     <span class="o">=</span> <span class="s2">&quot;neb&quot;</span>
+    <span class="n">opt_scheme</span>        <span class="o">=</span> <span class="s2">&quot;broyden&quot;</span>
+    <span class="n">CI_scheme</span>         <span class="o">=</span> <span class="s2">&quot;auto&quot;</span>
+    <span class="n">nstep_path</span>        <span class="o">=</span> <span class="mi">1000</span>
+    <span class="n">path_thr</span>          <span class="o">=</span> <span class="mf">0.05</span>
+    <span class="n">ds</span>                <span class="o">=</span> <span class="mf">2.0</span>
+    <span class="n">k_max</span>             <span class="o">=</span> <span class="mf">0.3</span>
+    <span class="n">k_min</span>             <span class="o">=</span> <span class="mf">0.2</span>
+    <span class="n">num_of_images</span>     <span class="o">=</span> <span class="mi">7</span>
+<span class="o">/</span>
+<span class="n">END_PATH_INPUT</span>
+
+<span class="n">BEGIN_ENGINE_INPUT</span>
+<span class="o">&amp;</span><span class="n">CONTROL</span>
+<span class="o">/</span>
+
+<span class="o">&amp;</span><span class="n">SYSTEM</span>
+   <span class="n">ecutwfc</span>          <span class="o">=</span> <span class="mi">50</span>
+   <span class="n">ecutrho</span>          <span class="o">=</span> <span class="mi">400</span>
+   <span class="n">occupations</span>      <span class="o">=</span> <span class="s1">&#39;smearing&#39;</span>
+   <span class="n">degauss</span>          <span class="o">=</span> <span class="mf">0.01</span>
+   <span class="n">smearing</span>         <span class="o">=</span> <span class="s1">&#39;gaussian&#39;</span>
+   <span class="n">ntyp</span>             <span class="o">=</span> <span class="mi">2</span>
+   <span class="n">nat</span>              <span class="o">=</span> <span class="mi">13</span>
+   <span class="n">ibrav</span>            <span class="o">=</span> <span class="mi">0</span>
+<span class="o">/</span>
+<span class="o">&amp;</span><span class="n">ELECTRONS</span>
+   <span class="n">electron_maxstep</span> <span class="o">=</span> <span class="mi">100</span>
+   <span class="n">conv_thr</span>         <span class="o">=</span> <span class="mf">1e-06</span>
+   <span class="n">mixing_mode</span>      <span class="o">=</span> <span class="s1">&#39;plain&#39;</span>
+   <span class="n">mixing_beta</span>      <span class="o">=</span> <span class="mf">0.5</span>
+   <span class="n">diagonalization</span>  <span class="o">=</span> <span class="s1">&#39;david&#39;</span>
+<span class="o">/</span>
+
+<span class="n">ATOMIC_SPECIES</span>
+<span class="n">Al</span> <span class="mf">26.9815385</span> <span class="n">al_pbe_v1</span><span class="o">.</span><span class="n">uspp</span><span class="o">.</span><span class="n">F</span><span class="o">.</span><span class="n">UPF</span>
+<span class="n">Au</span> <span class="mf">196.966569</span> <span class="n">au_pbe_v1</span><span class="o">.</span><span class="n">uspp</span><span class="o">.</span><span class="n">F</span><span class="o">.</span><span class="n">UPF</span>
+
+<span class="n">K_POINTS</span> <span class="n">automatic</span>
+<span class="mi">8</span> <span class="mi">8</span> <span class="mi">1</span>  <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+
+<span class="n">CELL_PARAMETERS</span> <span class="n">angstrom</span>
+<span class="mf">5.72756492761104</span> <span class="mf">0.00000000000000</span> <span class="mf">0.00000000000000</span>
+<span class="mf">0.00000000000000</span> <span class="mf">5.72756492761104</span> <span class="mf">0.00000000000000</span>
+<span class="mf">0.00000000000000</span> <span class="mf">0.00000000000000</span> <span class="mf">13.75000000000000</span>
+
+<span class="n">BEGIN_POSITIONS</span>
+<span class="n">FIRST_IMAGE</span>
+<span class="n">ATOMIC_POSITIONS</span> <span class="n">angstrom</span>
+<span class="n">Al</span> <span class="mf">0.0000000000</span> <span class="mf">0.0000000000</span> <span class="mf">4.0000000000</span>  <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="n">Al</span> <span class="mf">2.8637824638</span> <span class="mf">0.0000000000</span> <span class="mf">4.0000000000</span>  <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="n">Al</span> <span class="mf">0.0000000000</span> <span class="mf">2.8637824638</span> <span class="mf">4.0000000000</span>  <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="n">Al</span> <span class="mf">2.8637824638</span> <span class="mf">2.8637824638</span> <span class="mf">4.0000000000</span>  <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="n">Al</span> <span class="mf">1.4318912319</span> <span class="mf">1.4318912319</span> <span class="mf">6.0250000000</span>  <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="n">Al</span> <span class="mf">4.2956736957</span> <span class="mf">1.4318912319</span> <span class="mf">6.0250000000</span>  <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="n">Al</span> <span class="mf">1.4318912319</span> <span class="mf">4.2956736957</span> <span class="mf">6.0250000000</span>  <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="n">Al</span> <span class="mf">4.2956736957</span> <span class="mf">4.2956736957</span> <span class="mf">6.0250000000</span>  <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="n">Al</span> <span class="o">-</span><span class="mf">0.0727584676</span> <span class="o">-</span><span class="mf">0.0727584676</span> <span class="mf">7.9964398610</span> 
+<span class="n">Al</span> <span class="mf">2.9365409314</span> <span class="o">-</span><span class="mf">0.0727584676</span> <span class="mf">7.9964398610</span> 
+<span class="n">Al</span> <span class="o">-</span><span class="mf">0.0727584676</span> <span class="mf">2.9365409314</span> <span class="mf">7.9964398610</span> 
+<span class="n">Al</span> <span class="mf">2.9365409314</span> <span class="mf">2.9365409314</span> <span class="mf">7.9964398610</span> 
+<span class="n">Au</span> <span class="mf">1.4318912319</span> <span class="mf">1.4318912319</span> <span class="mf">9.4013916343</span> 
+<span class="n">LAST_IMAGE</span>
+<span class="n">ATOMIC_POSITIONS</span> <span class="n">angstrom</span>
+<span class="n">Al</span> <span class="mf">0.0000000000</span> <span class="mf">0.0000000000</span> <span class="mf">4.0000000000</span>  <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="n">Al</span> <span class="mf">2.8637824638</span> <span class="mf">0.0000000000</span> <span class="mf">4.0000000000</span>  <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="n">Al</span> <span class="mf">0.0000000000</span> <span class="mf">2.8637824638</span> <span class="mf">4.0000000000</span>  <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="n">Al</span> <span class="mf">2.8637824638</span> <span class="mf">2.8637824638</span> <span class="mf">4.0000000000</span>  <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="n">Al</span> <span class="mf">1.4318912319</span> <span class="mf">1.4318912319</span> <span class="mf">6.0250000000</span>  <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="n">Al</span> <span class="mf">4.2956736957</span> <span class="mf">1.4318912319</span> <span class="mf">6.0250000000</span>  <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="n">Al</span> <span class="mf">1.4318912319</span> <span class="mf">4.2956736957</span> <span class="mf">6.0250000000</span>  <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="n">Al</span> <span class="mf">4.2956736957</span> <span class="mf">4.2956736957</span> <span class="mf">6.0250000000</span>  <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="n">Al</span> <span class="mf">0.0723226214</span> <span class="o">-</span><span class="mf">0.0731270933</span> <span class="mf">7.9984399474</span> 
+<span class="n">Al</span> <span class="mf">2.7914598424</span> <span class="o">-</span><span class="mf">0.0731270933</span> <span class="mf">7.9984399474</span> 
+<span class="n">Al</span> <span class="mf">0.0723226214</span> <span class="mf">2.9369095572</span> <span class="mf">7.9984399474</span> 
+<span class="n">Al</span> <span class="mf">2.7914598424</span> <span class="mf">2.9369095572</span> <span class="mf">7.9984399474</span> 
+<span class="n">Au</span> <span class="mf">4.2956736957</span> <span class="mf">1.4318912319</span> <span class="mf">9.4043801855</span> 
+<span class="n">END_POSITIONS</span>
+</pre></div>
+</div>
+<p>Let’s examine a few points:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">num_of_images</span></code> = 7</p>
+<ul class="simple">
+<li><p>This is the total number of images including the initial and final images</p></li>
+<li><p>This means you have 5 intermediate images</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nstep_path</span></code> = 1000</p>
+<ul class="simple">
+<li><p>This is the maximum number of steps</p></li>
+<li><p>The NEB calculation will stop if the convergence criteria is met</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">path_thr</span></code> = 0.05</p>
+<ul class="simple">
+<li><p>This is the convergence criteria</p></li>
+<li><p>The NEB calculation will stop if the convergence criteria is met</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CI_scheme</span></code> = “auto”</p>
+<ul class="simple">
+<li><p>This is the climbing image scheme</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">auto</span></code> means that the climbing image will be automatically determined by the code</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">no-CI</span></code> means that you will manually specify the climbing image</p></li>
+<li><p><strong>NOTE:</strong> Usually, we first run the NEB calculation with <code class="docutils literal notranslate"><span class="pre">no-CI</span></code> to get a better and converged pathway. Then we run it again with <code class="docutils literal notranslate"><span class="pre">auto</span></code> to get the final MEP and correct energy barrier.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">restart_mode</span></code> = “restart”</p>
+<ul class="simple">
+<li><p>This is the restart mode</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">restart</span></code> means that the code will restart from the last iteration</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">from_scratch</span></code> means that the code will start from the beginning</p></li>
+<li><p><strong>NOTE:</strong> I just always use <code class="docutils literal notranslate"><span class="pre">restart</span></code> because I don’t need to change it anymore if the calculation stopped due to time limit in super computer. If its the first run, its still okay since it will just revert to <code class="docutils literal notranslate"><span class="pre">from_scratch</span></code> when the restart file is not found.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Why</span> <span class="pre">is</span> <span class="pre">there</span> <span class="pre">only</span> <span class="pre">2</span> <span class="pre">images?</span></code></p>
+<ul class="simple">
+<li><p>This is because the neb.x will automatically generate the intermediate for you from the initial and final images and your <code class="docutils literal notranslate"><span class="pre">num_of_images</span></code> parameter.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="job-submission">
+<h4>Job submission<a class="headerlink" href="#job-submission" title="Link to this heading">#</a></h4>
+<p>The efficiency of the NEB calculation is very important. It is very easy to waste a lot of time and resources if you don’t know how to properly submit the job.</p>
+<p>There are three example input files prepared for varying computational parameters:</p>
+<ol class="arabic simple">
+<li><p>serial version (linear):</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/kimrojas/digital-alchemy/tree/main/book/files/neb_tutorial/au_diffusion/01_neb_serial">seriar linear</a></p></li>
+<li><p>all N images are calculated in a single node</p></li>
+<li><p>each image is calculated one after the other in sequence</p></li>
+<li><p>this is the slowest version</p></li>
+<li><p><strong>DO NOT USE THIS VERSION FOR PRODUCTION RUNS (for testing only)</strong></p></li>
+</ul>
+</li>
+<li><p>parallel version (linear):</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/kimrojas/digital-alchemy/tree/main/book/files/neb_tutorial/au_diffusion/02_neb_parallel">parallel linear</a></p></li>
+<li><p>each image is distributed to a node</p></li>
+<li><p>if you have a simple system and the reaction pathway is simple, this is the fastest version</p></li>
+</ul>
+</li>
+<li><p>parallel version (idpp):</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/kimrojas/digital-alchemy/tree/main/book/files/neb_tutorial/au_diffusion/03_neb_parallel_idpp">parallel idpp</a></p></li>
+<li><p>Same with the parallel linear version, but the initial pathway is generated using <code class="docutils literal notranslate"><span class="pre">idpp</span></code> instead of linear interpolation</p></li>
+<li><p>This is the fastest version if you have a complex system and the reaction pathway is complex</p></li>
+</ul>
+</li>
+</ol>
+<p>Let’s discuss more in detail:</p>
+<section id="parallelization">
+<h5>parallelization<a class="headerlink" href="#parallelization" title="Link to this heading">#</a></h5>
+<ul class="simple">
+<li><p>the simplest way to parallelize the NEB calculation is to distribute each image to a node</p></li>
+<li><p>if you have 7 images (including the initial and final images), you need 5 nodes</p></li>
+<li><p>You can trigger this parallelization via the following batch script</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+<span class="c1">#SBATCH --partition=i8cpu</span>
+<span class="c1">#SBATCH --nodes=5</span>
+<span class="c1">#SBATCH --ntasks-per-node=128</span>
+<span class="c1">#SBATCH --time=00:30:00</span>
+<span class="c1">#SBATCH --job-name=calc</span>
+<span class="c1">#SBATCH --array=1</span>
+
+srun<span class="w"> </span>neb.x<span class="w"> </span>-ni<span class="w"> </span><span class="m">5</span><span class="w"> </span>-inp<span class="w"> </span>neb_noci.inp<span class="w"> </span>&gt;&gt;<span class="w"> </span>neb_noci.out
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--nodes=5</span></code> - This is the number of nodes</p></li>
+<li><p>invoke the <code class="docutils literal notranslate"><span class="pre">-ni</span></code> flag to specify the number of images</p></li>
+<li><p>this make you have a 1:1 ratio of nodes to images</p></li>
+<li><p>the use of <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> is to append the output to the file instead of overwriting it. A useful trick when jobs get terminated due to time limit.</p></li>
+</ul>
+</section>
+<section id="idpp-usage">
+<h5>IDPP usage<a class="headerlink" href="#idpp-usage" title="Link to this heading">#</a></h5>
+<ul class="simple">
+<li><p>IDPP is a better pathway generator compared to linear interpolation but not in all cases</p></li>
+<li><p>Just use Linear if you are sure the pathway is very simple, otherwise always use IDPP</p></li>
+</ul>
+</section>
+</section>
+</section>
+</section>
+<section id="neb-via-ase">
+<h2>NEB via ASE<a class="headerlink" href="#neb-via-ase" title="Link to this heading">#</a></h2>
+<p>ASE also has a NEB implementation. It is very easy to use and it is very flexible. You can use any calculator you want (VASP, Quantum Espresso, LAMMPS, etc.) as long as it is supported by ASE. In this case we use Quantum Espresso.</p>
+<p><strong>What is the difference in implementation?</strong></p>
+<ul class="simple">
+<li><p>QE NEB implementation can be parallelized over image, ASE NEB implementation cannot.</p></li>
+<li><p>QE NEB pathway is updated after all images are evaluated, ASE NEB implementation updates the pathway after each image is evaluated</p></li>
+<li><p>QE NEB implementation is still faster than ASE NEB implementation</p></li>
+</ul>
+<p>Example run files are provided here:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/kimrojas/digital-alchemy/tree/main/book/files/neb_tutorial/au_diffusion/04_ase_improvedtangent_idpp_pw_singlenode">single node SCF</a></p></li>
+<li><p><a class="reference external" href="https://github.com/kimrojas/digital-alchemy/tree/main/book/files/neb_tutorial/au_diffusion/05_ase_improvedtangent_idpp_pw_multinode">multi node SCF</a></p></li>
+</ul>
+<p>The difference between the two is the amount of nodes used for the SCF calculation. The single node SCF will use a single node for all the SCF calculations. The multi node SCF multiple nodes for each SCF calculation. The multi node SCF is faster than the single node SCF, assuming the system is large enough to warrant the use of multiple nodes.</p>
+</section>
+<section id="neb-via-catlearn">
+<h2>NEB via Catlearn<a class="headerlink" href="#neb-via-catlearn" title="Link to this heading">#</a></h2>
+<p>Catlearn is package which has a ML NEB implemenetation. It uses DFT to calculate the forces and energies of the images and uses a ML model to update the pathway. It is very fast and very accurate. It is also very easy to use.</p>
+<p>An example run file is provided here:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/kimrojas/digital-alchemy/tree/main/book/files/neb_tutorial/au_diffusion/06_mlneb_idpp_pw_multinode">catlearn</a></p></li>
+<li><p>Note: the parallelization is similar to a multi node ASE NEB because it still use ASE under the hood. However the ML model training can be sped up by using <code class="docutils literal notranslate"><span class="pre">OMP_NUM_THREADS=128</span></code>. you can invoke this by <code class="docutils literal notranslate"><span class="pre">OMP_NUM_THREADS=128</span> <span class="pre">python3</span> <span class="pre">mlneb.py</span></code></p></li>
+</ul>
+<p>The energy barriers are quite close to QE and ASE NEB implementations. The only difference is that the ML NEB implementation is much faster then ASE NEB due to lower number of DFT calculations needed to converge to the MEP.</p>
+<p>However, if there are a lot of moving parts in the system, the training of the ML model will take a long time. In this case, it is better to use the ASE NEB implementation.</p>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>Here is a summary of the different NEB implementations:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"><p>Time (s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>QE serial</p></td>
+<td><p>1043</p></td>
+</tr>
+<tr class="row-odd"><td><p>QE parallel</p></td>
+<td><p>337</p></td>
+</tr>
+<tr class="row-even"><td><p>QE parallel idpp</p></td>
+<td><p>376</p></td>
+</tr>
+<tr class="row-odd"><td><p>ASE single node</p></td>
+<td><p>1798</p></td>
+</tr>
+<tr class="row-even"><td><p>ASE multi node</p></td>
+<td><p>1159</p></td>
+</tr>
+<tr class="row-odd"><td><p>Catlearn</p></td>
+<td><p>228</p></td>
+</tr>
+</tbody>
+</table>
+<p>You can’t go wrong the the “QE parallel idpp”. However if you can test the “Catlearn” implementation, it is better to use it since it is much faster, just make sure that the barrier is close to the QE implementation.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/tutorials/neb"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-a-introduction-to-neb-method-tutorial">Make a introduction to NEB method tutorial</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pathway-interpolation">Pathway Interpolation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpolator">Interpolator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output-files">Output files</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neb-via-quantum-espresso">NEB via Quantum Espresso</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-au-diffusion">Example: Au diffusion</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#input-file">Input file</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#job-submission">Job submission</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#parallelization">parallelization</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#idpp-usage">IDPP usage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neb-via-ase">NEB via ASE</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neb-via-catlearn">NEB via Catlearn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Kurt Rojas
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
