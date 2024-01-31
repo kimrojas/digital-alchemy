@@ -57,8 +57,8 @@ Quantum Espresso already has a NEB implementation called `neb.x`. You can simply
 In this example, a Au atoms will diffuse from one hollow site to another hollow site on an Al(111) surface. The initial and final images are shown below:
 
 
-<img src="Al12Au_initial.png" alt="Initial Image" height="200">
-<img src="Al12Au_final.png" alt="Final Image" height="200">
+<img src="docs/tutorials/neb/Al12Au_initial.png" alt="Initial Image" height="200">
+<img src="docs/tutorials/neb/Al12Au_final.png" alt="Final Image" height="200">
 
 
 #### Input file
