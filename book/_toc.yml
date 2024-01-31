@@ -13,7 +13,8 @@ parts:
   - file: docs/tutorials/catlearn/catlearn_intro
     sections:
     - file: docs/tutorials/catlearn/catlearn-example-01-squid
-
+  - file: docs/tutorials/neb/neb_intro
+  
 - caption: Recipes
   chapters:
   - file: docs/recipes/conda/conda-index
