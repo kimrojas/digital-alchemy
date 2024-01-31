@@ -57,13 +57,11 @@ In this example, a Au atoms will diffuse from one hollow site to another hollow 
 ```{image} Al12Au_initial.png
 :alt: Initial
 :width: 200px
-:align: left
 ```
 
 ```{image} Al12Au_final.png
 :alt: Final
 :width: 200px
-:align: right
 ```
 
 
