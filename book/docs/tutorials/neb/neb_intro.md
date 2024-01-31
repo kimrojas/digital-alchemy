@@ -1,7 +1,5 @@
 # Nudge elastic band (NEB) method
 
-## Make a introduction to NEB method tutorial
-
 In this section, we will introduce the NEB method. Specifically, we will talk about:
 
 - Path Interpolation
@@ -56,6 +54,12 @@ Quantum Espresso already has a NEB implementation called `neb.x`. You can simply
 
 In this example, a Au atoms will diffuse from one hollow site to another hollow site on an Al(111) surface. The initial and final images are shown below:
 
+```{image} Al12Au_initial.png
+:alt: fishy
+:class: bg-primary mb-1
+:width: 200px
+:align: center
+```
 
 <img src="docs/tutorials/neb/Al12Au_initial.png" alt="Initial Image" height="200">
 <img src="docs/tutorials/neb/Al12Au_final.png" alt="Final Image" height="200">
