@@ -1,0 +1,398 @@
+
+     Program NEB v.7.2 starts on 29Jan2024 at 13:49:31 
+
+     This program is part of the open-source Quantum ESPRESSO suite
+     for quantum simulation of materials; please cite
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 21 395502 (2009);
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 29 465901 (2017);
+         "P. Giannozzi et al., J. Chem. Phys. 152 154105 (2020);
+          URL http://www.quantum-espresso.org", 
+     in publications or presentations arising from this work. More details at
+     http://www.quantum-espresso.org/quote
+
+     Parallel version (MPI & OpenMP), running on     640 processor cores
+     Number of MPI processes:               640
+     Threads/MPI process:                     1
+
+     MPI processes distributed on     5 nodes
+     path-images division:  nimage    =       5
+     223321 MiB available memory on the printing compute node when the environment starts
+ 
+
+     Parsing file: neb_noci.inp
+     Message from routine parse_and_split:
+     parsing error?
+     Message from routine parse_and_split:
+     parsing error?
+     Message from routine parse_and_split:
+     parsing error?
+     Reading input from pw_1.in
+     Reading input from pw_2.in
+
+     restart file 'pwscf.path' not found: 
+     starting from scratch
+
+     initial path length           =  5.4395 bohr
+     initial inter-image distance  =  0.9066 bohr
+ 
+     string_method                 =    neb
+     restart_mode                  =    from_scratch
+     opt_scheme                    =    broyden
+     num_of_images                 =    7
+     nstep_path                    =    1000
+     CI_scheme                     =    no-CI
+     first_last_opt                =    F
+     use_freezing                  =    F
+     ds                            =    2.0000 a.u.
+     k_max                         =    0.3000 a.u.
+     k_min                         =    0.2000 a.u.
+     suggested k_max               =    0.1542 a.u.
+     suggested k_min               =    0.1028 a.u.
+     path_thr                      =    0.0500 eV / A
+
+     ------------------------------ iteration   1 ------------------------------
+
+     cpu =  0   tcpu =      4.5    self-consistency for image   1
+     Message from routine setup:
+     using ibrav=0 with symmetry is DISCOURAGED, use correct ibrav instead
+     cpu =  0   tcpu =     16.9    self-consistency for image   2
+     Message from routine setup:
+     using ibrav=0 with symmetry is DISCOURAGED, use correct ibrav instead
+
+     activation energy (->) =   2.609998 eV
+     activation energy (<-) =   2.611454 eV
+
+     image        energy (eV)        error (eV/A)        frozen
+
+         1      -2656.3393108            0.206619            T
+         2      -2655.8171801            1.788575            F
+         3      -2654.5083394            6.168012            F
+         4      -2653.7293127            8.782213            F
+         5      -2654.5106627            6.153755            F
+         6      -2655.8191904            1.774960            F
+         7      -2656.3407664            0.201781            T
+
+     path length          =  5.439 bohr
+     inter-image distance =  0.907 bohr
+
+     ------------------------------ iteration   2 ------------------------------
+
+     cpu =  0   tcpu =     30.7    self-consistency for image   2
+     Message from routine setup:
+     using ibrav=0 with symmetry is DISCOURAGED, use correct ibrav instead
+
+     activation energy (->) =   1.078989 eV
+     activation energy (<-) =   1.080444 eV
+
+     image        energy (eV)        error (eV/A)        frozen
+
+         1      -2656.3393108            0.206619            T
+         2      -2655.9138864            1.656069            F
+         3      -2655.3769738            2.663201            F
+         4      -2655.2603219            2.538280            F
+         5      -2655.3775391            2.643995            F
+         6      -2655.9151940            1.626250            F
+         7      -2656.3407664            0.201781            T
+
+     path length          =  5.513 bohr
+     inter-image distance =  0.919 bohr
+
+     ------------------------------ iteration   3 ------------------------------
+
+     cpu =  0   tcpu =     54.2    self-consistency for image   2
+     Message from routine setup:
+     using ibrav=0 with symmetry is DISCOURAGED, use correct ibrav instead
+
+     activation energy (->) =   0.874106 eV
+     activation energy (<-) =   0.875562 eV
+
+     image        energy (eV)        error (eV/A)        frozen
+
+         1      -2656.3393108            0.206619            T
+         2      -2656.0020852            0.486886            F
+         3      -2655.5982228            0.780946            F
+         4      -2655.4652044            0.825207            F
+         5      -2655.5983508            0.778631            F
+         6      -2656.0024645            0.521766            F
+         7      -2656.3407664            0.201781            T
+
+     path length          =  5.658 bohr
+     inter-image distance =  0.943 bohr
+
+     ------------------------------ iteration   4 ------------------------------
+
+     cpu =  0   tcpu =     74.9    self-consistency for image   2
+     Message from routine setup:
+     using ibrav=0 with symmetry is DISCOURAGED, use correct ibrav instead
+
+     activation energy (->) =   0.816158 eV
+     activation energy (<-) =   0.817614 eV
+
+     image        energy (eV)        error (eV/A)        frozen
+
+         1      -2656.3393108            0.206619            T
+         2      -2656.0225795            0.436304            F
+         3      -2655.6378247            0.707247            F
+         4      -2655.5231524            0.805822            F
+         5      -2655.6377284            0.705466            F
+         6      -2656.0231696            0.457538            F
+         7      -2656.3407664            0.201781            T
+
+     path length          =  5.653 bohr
+     inter-image distance =  0.942 bohr
+
+     ------------------------------ iteration   5 ------------------------------
+
+     cpu =  0   tcpu =     93.2    self-consistency for image   2
+     Message from routine setup:
+     using ibrav=0 with symmetry is DISCOURAGED, use correct ibrav instead
+
+     activation energy (->) =   0.732963 eV
+     activation energy (<-) =   0.734419 eV
+
+     image        energy (eV)        error (eV/A)        frozen
+
+         1      -2656.3393108            0.206619            T
+         2      -2656.0358257            0.490915            F
+         3      -2655.6985070            0.263713            F
+         4      -2655.6063478            0.304385            F
+         5      -2655.6981657            0.263818            F
+         6      -2656.0350140            0.486477            F
+         7      -2656.3407664            0.201781            T
+
+     path length          =  5.877 bohr
+     inter-image distance =  0.979 bohr
+
+     ------------------------------ iteration   6 ------------------------------
+
+     cpu =  0   tcpu =    118.5    self-consistency for image   2
+     Message from routine setup:
+     using ibrav=0 with symmetry is DISCOURAGED, use correct ibrav instead
+
+     activation energy (->) =   0.724424 eV
+     activation energy (<-) =   0.725880 eV
+
+     image        energy (eV)        error (eV/A)        frozen
+
+         1      -2656.3393108            0.206619            T
+         2      -2656.0680670            0.153603            F
+         3      -2655.7116859            0.190728            F
+         4      -2655.6148867            0.176152            F
+         5      -2655.7113476            0.186399            F
+         6      -2656.0679486            0.153967            F
+         7      -2656.3407664            0.201781            T
+
+     path length          =  5.874 bohr
+     inter-image distance =  0.979 bohr
+
+     ------------------------------ iteration   7 ------------------------------
+
+     cpu =  0   tcpu =    135.8    self-consistency for image   2
+     Message from routine setup:
+     using ibrav=0 with symmetry is DISCOURAGED, use correct ibrav instead
+
+     activation energy (->) =   0.710663 eV
+     activation energy (<-) =   0.712118 eV
+
+     image        energy (eV)        error (eV/A)        frozen
+
+         1      -2656.3393108            0.206619            T
+         2      -2656.0903346            0.197468            F
+         3      -2655.7283969            0.138512            F
+         4      -2655.6286481            0.134438            F
+         5      -2655.7280266            0.136403            F
+         6      -2656.0893527            0.207502            F
+         7      -2656.3407664            0.201781            T
+
+     path length          =  6.025 bohr
+     inter-image distance =  1.004 bohr
+
+     ------------------------------ iteration   8 ------------------------------
+
+     cpu =  0   tcpu =    156.4    self-consistency for image   2
+     Message from routine setup:
+     using ibrav=0 with symmetry is DISCOURAGED, use correct ibrav instead
+
+     activation energy (->) =   0.705343 eV
+     activation energy (<-) =   0.706799 eV
+
+     image        energy (eV)        error (eV/A)        frozen
+
+         1      -2656.3393108            0.206619            T
+         2      -2656.1085898            0.102491            F
+         3      -2655.7359238            0.111047            F
+         4      -2655.6339679            0.111511            F
+         5      -2655.7351921            0.120151            F
+         6      -2656.1076707            0.108654            F
+         7      -2656.3407664            0.201781            T
+
+     path length          =  6.095 bohr
+     inter-image distance =  1.016 bohr
+
+     ------------------------------ iteration   9 ------------------------------
+
+     cpu =  0   tcpu =    173.7    self-consistency for image   2
+     Message from routine setup:
+     using ibrav=0 with symmetry is DISCOURAGED, use correct ibrav instead
+
+     activation energy (->) =   0.699210 eV
+     activation energy (<-) =   0.700665 eV
+
+     image        energy (eV)        error (eV/A)        frozen
+
+         1      -2656.3393108            0.206619            T
+         2      -2656.1259348            0.111027            F
+         3      -2655.7462383            0.092751            F
+         4      -2655.6401011            0.096271            F
+         5      -2655.7465345            0.134945            F
+         6      -2656.1241662            0.087944            F
+         7      -2656.3407664            0.201781            T
+
+     path length          =  6.204 bohr
+     inter-image distance =  1.034 bohr
+
+     ------------------------------ iteration  10 ------------------------------
+
+     cpu =  0   tcpu =    190.3    self-consistency for image   2
+     Message from routine setup:
+     using ibrav=0 with symmetry is DISCOURAGED, use correct ibrav instead
+
+     activation energy (->) =   0.696218 eV
+     activation energy (<-) =   0.697673 eV
+
+     image        energy (eV)        error (eV/A)        frozen
+
+         1      -2656.3393108            0.206619            T
+         2      -2656.1428989            0.071350            F
+         3      -2655.7508546            0.086994            F
+         4      -2655.6430929            0.132276            F
+         5      -2655.7482214            0.178436            F
+         6      -2656.1435973            0.148525            F
+         7      -2656.3407664            0.201781            T
+
+     path length          =  6.339 bohr
+     inter-image distance =  1.056 bohr
+
+     ------------------------------ iteration  11 ------------------------------
+
+     cpu =  0   tcpu =    208.3    self-consistency for image   2
+     Message from routine setup:
+     using ibrav=0 with symmetry is DISCOURAGED, use correct ibrav instead
+
+     activation energy (->) =   0.695955 eV
+     activation energy (<-) =   0.697410 eV
+
+     image        energy (eV)        error (eV/A)        frozen
+
+         1      -2656.3393108            0.206619            T
+         2      -2656.1398743            0.064541            F
+         3      -2655.7504971            0.054559            F
+         4      -2655.6433563            0.100175            F
+         5      -2655.7511638            0.116145            F
+         6      -2656.1375928            0.059589            F
+         7      -2656.3407664            0.201781            T
+
+     path length          =  6.301 bohr
+     inter-image distance =  1.050 bohr
+
+     ------------------------------ iteration  12 ------------------------------
+
+     cpu =  0   tcpu =    224.2    self-consistency for image   2
+     Message from routine setup:
+     using ibrav=0 with symmetry is DISCOURAGED, use correct ibrav instead
+
+     activation energy (->) =   0.695614 eV
+     activation energy (<-) =   0.697069 eV
+
+     image        energy (eV)        error (eV/A)        frozen
+
+         1      -2656.3393108            0.206619            T
+         2      -2656.1403887            0.053102            F
+         3      -2655.7517123            0.061479            F
+         4      -2655.6436970            0.079469            F
+         5      -2655.7496558            0.053318            F
+         6      -2656.1396641            0.054195            F
+         7      -2656.3407664            0.201781            T
+
+     path length          =  6.301 bohr
+     inter-image distance =  1.050 bohr
+
+     ------------------------------ iteration  13 ------------------------------
+
+     cpu =  0   tcpu =    234.8    self-consistency for image   2
+     Message from routine setup:
+     using ibrav=0 with symmetry is DISCOURAGED, use correct ibrav instead
+
+     activation energy (->) =   0.695144 eV
+     activation energy (<-) =   0.696600 eV
+
+     image        energy (eV)        error (eV/A)        frozen
+
+         1      -2656.3393108            0.206619            T
+         2      -2656.1423829            0.061608            F
+         3      -2655.7502078            0.136973            F
+         4      -2655.6441665            0.214283            F
+         5      -2655.7523305            0.175971            F
+         6      -2656.1385788            0.067447            F
+         7      -2656.3407664            0.201781            T
+
+     path length          =  6.295 bohr
+     inter-image distance =  1.049 bohr
+
+     ------------------------------ iteration  14 ------------------------------
+
+     cpu =  0   tcpu =    250.0    self-consistency for image   2
+     Message from routine setup:
+     using ibrav=0 with symmetry is DISCOURAGED, use correct ibrav instead
+
+     activation energy (->) =   0.695437 eV
+     activation energy (<-) =   0.696893 eV
+
+     image        energy (eV)        error (eV/A)        frozen
+
+         1      -2656.3393108            0.206619            T
+         2      -2656.1377612            0.222315            F
+         3      -2655.7538130            0.337608            F
+         4      -2655.6438736            0.438054            F
+         5      -2655.7456541            0.342946            F
+         6      -2656.1408965            0.124298            F
+         7      -2656.3407664            0.201781            T
+
+     path length          =  6.282 bohr
+     inter-image distance =  1.047 bohr
+
+     ------------------------------ iteration  15 ------------------------------
+
+     cpu =  0   tcpu =    267.9    self-consistency for image   2
+     Message from routine setup:
+     using ibrav=0 with symmetry is DISCOURAGED, use correct ibrav instead
+
+     activation energy (->) =   0.694956 eV
+     activation energy (<-) =   0.696412 eV
+
+     image        energy (eV)        error (eV/A)        frozen
+
+         1      -2656.3393108            0.206619            T
+         2      -2656.1424522            0.024694            F
+         3      -2655.7514073            0.028733            F
+         4      -2655.6443546            0.019640            F
+         5      -2655.7504505            0.046242            F
+         6      -2656.1401654            0.021904            F
+         7      -2656.3407664            0.201781            T
+
+     path length          =  6.293 bohr
+     inter-image distance =  1.049 bohr
+
+     ---------------------------------------------------------------------------
+
+
+     neb: convergence achieved in  15 iterations
+ 
+     NEB          :   3m58.58s CPU   4m45.07s WALL
+
+ 
+   This run was terminated on:  13:54:16  29Jan2024            
+
+=------------------------------------------------------------------------------=
+   JOB DONE.
+=------------------------------------------------------------------------------=

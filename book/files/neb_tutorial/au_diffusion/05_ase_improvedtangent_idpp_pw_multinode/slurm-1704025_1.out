@@ -1,0 +1,44 @@
+Currently Loaded Modulefiles:
+ 1) oneapi_compiler/2023.0.0   2) oneapi_mkl/2023.0.0   3) oneapi_mpi/2023.0.0  
+========= Job started  at Mon Jan 29 17:08:59 JST 2024 ==========
+/home/k0107/k010725/apps/mambaforge/envs/catlearn/lib/python3.10/site-packages/ase/parallel.py:350: FutureWarning: ase.parallel.rank has been deprecated.  Please use ase.parallel.world.rank instead.
+  warnings.warn('ase.parallel.{name} has been deprecated.  '
+      Step     Time          Energy         fmax
+BFGS:    0 17:10:48    -2654.281795        6.9107
+BFGS:    1 17:11:43    -2655.172460        3.1215
+BFGS:    2 17:12:37    -2655.430832        1.1697
+BFGS:    3 17:13:25    -2655.480701        0.7499
+BFGS:    4 17:14:19    -2655.518711        0.8695
+BFGS:    5 17:15:10    -2655.562929        0.7819
+BFGS:    6 17:16:02    -2655.598314        0.5427
+BFGS:    7 17:16:53    -2655.616235        0.3673
+BFGS:    8 17:17:43    -2655.620790        0.2500
+BFGS:    9 17:18:35    -2655.623209        0.2526
+BFGS:   10 17:19:29    -2655.629344        0.2250
+srun: Job 1704025 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Step created for job 1704025
+BFGS:   11 17:20:18    -2655.637790        0.2534
+BFGS:   12 17:21:11    -2655.642357        0.2769
+BFGS:   13 17:22:07    -2655.642688        0.2140
+BFGS:   14 17:22:57    -2655.642827        0.1363
+BFGS:   15 17:23:55    -2655.643493        0.0865
+BFGS:   16 17:24:51    -2655.643928        0.0956
+BFGS:   17 17:25:40    -2655.643846        0.0826
+BFGS:   18 17:26:30    -2655.643732        0.0673
+srun: Job 1704025 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Step created for job 1704025
+BFGS:   19 17:27:21    -2655.643842        0.0589
+BFGS:   20 17:28:14    -2655.644063        0.0299
+      Step     Time          Energy         fmax
+BFGS:    0 17:28:14    -2655.644063        0.0299
+/home/k0107/k010725/apps/mambaforge/envs/catlearn/lib/python3.10/site-packages/ase/utils/__init__.py:62: FutureWarning: NEBTools.get_fit() is deprecated.  Please use ase.utils.forcecurve.fit_images(images).
+  warnings.warn(warning)
+Energy barrier: 0.6950118057579857 eV
+Traceback (most recent call last):
+  File "/home/k0107/k010725/neb_tutorial/au_diffusion/05_ase_improvedtangent_idpp_pw_multinode/output_files/ase_neb.py", line 66, in <module>
+    plotneb(trajectory='neb_images.traj', view_path=False)
+  File "/home/k0107/k010725/apps/mambaforge/envs/catlearn/lib/python3.10/site-packages/catlearn/optimize/tools.py", line 33, in plotneb
+    u_pred.append(i.info['uncertainty'])
+KeyError: 'uncertainty'
+Elapsed Time: 1159 seconds
+========= Job finished at Mon Jan 29 17:28:18 JST 2024 ==========

@@ -1,0 +1,29 @@
+
+     Program NEB v.7.2 starts on 29Jan2024 at 13:56: 5 
+
+     This program is part of the open-source Quantum ESPRESSO suite
+     for quantum simulation of materials; please cite
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 21 395502 (2009);
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 29 465901 (2017);
+         "P. Giannozzi et al., J. Chem. Phys. 152 154105 (2020);
+          URL http://www.quantum-espresso.org", 
+     in publications or presentations arising from this work. More details at
+     http://www.quantum-espresso.org/quote
+
+     Parallel version (MPI & OpenMP), running on     640 processor cores
+     Number of MPI processes:               640
+     Threads/MPI process:                     1
+
+     MPI processes distributed on     5 nodes
+     path-images division:  nimage    =       5
+     225725 MiB available memory on the printing compute node when the environment starts
+ 
+
+     Parsing file: neb_auto.inp
+     Reading input from pw_1.in
+     Reading input from pw_2.in
+     cpu =  3   tcpu =      1.5    self-consistency for image   5
+     Message from routine setup:
+     using ibrav=0 with symmetry is DISCOURAGED, use correct ibrav instead
+     NEB          :     10.60s CPU     16.36s WALL
+

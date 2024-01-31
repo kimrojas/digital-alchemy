@@ -1,0 +1,48 @@
+
+     Program NEB v.7.2 starts on 29Jan2024 at 14:23:27 
+
+     This program is part of the open-source Quantum ESPRESSO suite
+     for quantum simulation of materials; please cite
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 21 395502 (2009);
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 29 465901 (2017);
+         "P. Giannozzi et al., J. Chem. Phys. 152 154105 (2020);
+          URL http://www.quantum-espresso.org", 
+     in publications or presentations arising from this work. More details at
+     http://www.quantum-espresso.org/quote
+
+     Parallel version (MPI & OpenMP), running on     640 processor cores
+     Number of MPI processes:               640
+     Threads/MPI process:                     1
+
+     MPI processes distributed on     5 nodes
+     path-images division:  nimage    =       5
+     224392 MiB available memory on the printing compute node when the environment starts
+ 
+
+     Parsing file: neb_noci.inp
+     Reading input from pw_1.in
+     Reading input from pw_2.in
+     Reading input from pw_3.in
+     Reading input from pw_4.in
+     Reading input from pw_5.in
+     Reading input from pw_6.in
+     Reading input from pw_7.in
+     cpu =  3   tcpu =      3.4    self-consistency for image   5
+     cpu =  3   tcpu =     28.2    self-consistency for image   5
+     cpu =  3   tcpu =     51.3    self-consistency for image   5
+     cpu =  3   tcpu =     77.1    self-consistency for image   5
+     cpu =  3   tcpu =     93.5    self-consistency for image   5
+     cpu =  3   tcpu =    113.2    self-consistency for image   5
+     cpu =  3   tcpu =    139.2    self-consistency for image   5
+     cpu =  3   tcpu =    159.7    self-consistency for image   5
+     cpu =  3   tcpu =    181.9    self-consistency for image   5
+     cpu =  3   tcpu =    204.2    self-consistency for image   5
+     cpu =  3   tcpu =    220.8    self-consistency for image   5
+     cpu =  3   tcpu =    241.9    self-consistency for image   5
+     cpu =  3   tcpu =    261.2    self-consistency for image   5
+     cpu =  3   tcpu =    280.1    self-consistency for image   5
+     cpu =  3   tcpu =    293.0    self-consistency for image   5
+     cpu =  3   tcpu =    306.3    self-consistency for image   5
+     cpu =  3   tcpu =    321.9    self-consistency for image   5
+     NEB          :   5m 2.72s CPU   5m35.01s WALL
+

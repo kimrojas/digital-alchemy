@@ -1,0 +1,52 @@
+Currently Loaded Modulefiles:
+ 1) oneapi_compiler/2023.0.0   2) oneapi_mkl/2023.0.0   3) oneapi_mpi/2023.0.0  
+========= Job started  at Mon Jan 29 16:37:26 JST 2024 ==========
+/home/k0107/k010725/apps/mambaforge/envs/catlearn/lib/python3.10/site-packages/ase/parallel.py:350: FutureWarning: ase.parallel.rank has been deprecated.  Please use ase.parallel.world.rank instead.
+  warnings.warn('ase.parallel.{name} has been deprecated.  '
+      Step     Time          Energy         fmax
+BFGS:    0 16:40:04    -2654.281795        6.9111
+BFGS:    1 16:41:29    -2655.172480        3.1220
+BFGS:    2 16:42:57    -2655.430868        1.1694
+BFGS:    3 16:44:25    -2655.480712        0.7498
+BFGS:    4 16:45:50    -2655.518738        0.8694
+BFGS:    5 16:47:15    -2655.562964        0.7824
+BFGS:    6 16:48:44    -2655.598232        0.5437
+BFGS:    7 16:50:13    -2655.616261        0.3668
+BFGS:    8 16:51:39    -2655.620791        0.2501
+BFGS:    9 16:53:05    -2655.623214        0.2527
+BFGS:   10 16:54:35    -2655.629324        0.2252
+BFGS:   11 16:56:02    -2655.637781        0.2530
+BFGS:   12 16:57:27    -2655.642355        0.2768
+BFGS:   13 16:58:57    -2655.642685        0.2141
+BFGS:   14 17:00:30    -2655.642827        0.1368
+BFGS:   15 17:01:59    -2655.643497        0.0864
+BFGS:   16 17:03:25    -2655.643928        0.0954
+BFGS:   17 17:04:58    -2655.643844        0.0832
+BFGS:   18 17:06:25    -2655.643733        0.0674
+srun: error: Unable to create step for job 1703949: Job/step already completing or completed
+Traceback (most recent call last):
+  File "/home/k0107/k010725/neb_tutorial/au_diffusion/04_ase_improvedtangent_idpp_pw_singlenode/output_files/ase_neb.py", line 54, in <module>
+    qn_ase.run(fmax=0.05)
+  File "/home/k0107/k010725/apps/mambaforge/envs/catlearn/lib/python3.10/site-packages/ase/optimize/optimize.py", line 269, in run
+    return Dynamics.run(self)
+  File "/home/k0107/k010725/apps/mambaforge/envs/catlearn/lib/python3.10/site-packages/ase/optimize/optimize.py", line 156, in run
+    for converged in Dynamics.irun(self):
+  File "/home/k0107/k010725/apps/mambaforge/envs/catlearn/lib/python3.10/site-packages/ase/optimize/optimize.py", line 143, in irun
+    self.log()
+  File "/home/k0107/k010725/apps/mambaforge/envs/catlearn/lib/python3.10/site-packages/ase/optimize/optimize.py", line 283, in log
+    forces = self.atoms.get_forces()
+  File "/home/k0107/k010725/apps/mambaforge/envs/catlearn/lib/python3.10/site-packages/ase/neb.py", line 688, in get_forces
+    forces = super().get_forces()
+  File "/home/k0107/k010725/apps/mambaforge/envs/catlearn/lib/python3.10/site-packages/ase/neb.py", line 405, in get_forces
+    energies[i] = images[i].get_potential_energy()
+  File "/home/k0107/k010725/apps/mambaforge/envs/catlearn/lib/python3.10/site-packages/ase/atoms.py", line 731, in get_potential_energy
+    energy = self._calc.get_potential_energy(self)
+  File "/home/k0107/k010725/apps/mambaforge/envs/catlearn/lib/python3.10/site-packages/ase/calculators/calculator.py", line 709, in get_potential_energy
+    energy = self.get_property('energy', atoms)
+  File "/home/k0107/k010725/apps/mambaforge/envs/catlearn/lib/python3.10/site-packages/ase/calculators/calculator.py", line 737, in get_property
+    self.calculate(atoms, [name], system_changes)
+  File "/home/k0107/k010725/apps/mambaforge/envs/catlearn/lib/python3.10/site-packages/ase/calculators/calculator.py", line 938, in calculate
+    raise CalculationFailed(msg)
+ase.calculators.calculator.CalculationFailed: Calculator "espresso" failed with command "srun pw.x -in pwscf.pwi > pwscf.pwo" failed in /home/k0107/k010725/neb_tutorial/au_diffusion/04_ase_improvedtangent_idpp_pw_singlenode/output_files/qecalc with error code 1
+Elapsed Time: 1798 seconds
+========= Job finished at Mon Jan 29 17:07:24 JST 2024 ==========

@@ -1,0 +1,5 @@
+Currently Loaded Modulefiles:
+ 1) oneapi_compiler/2023.0.0   2) oneapi_mkl/2023.0.0   3) oneapi_mpi/2023.0.0  
+========= Job started  at Sun Jan 28 14:02:13 JST 2024 ==========
+python: can't open file '/home/k0107/k010725/neb_tutorial/au_diffusion/00_structure_prep/qe_test2/neb_Au_diffusion.py': [Errno 2] No such file or directory
+========= Job finished at Sun Jan 28 14:02:13 JST 2024 ==========

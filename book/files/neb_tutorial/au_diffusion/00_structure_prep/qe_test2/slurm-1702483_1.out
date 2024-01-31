@@ -1,0 +1,14 @@
+Currently Loaded Modulefiles:
+ 1) oneapi_compiler/2023.0.0   2) oneapi_mkl/2023.0.0   3) oneapi_mpi/2023.0.0  
+========= Job started  at Sun Jan 28 14:06:30 JST 2024 ==========
+Abort(1090831) on node 0 (rank 0 in comm 0): Fatal error in PMPI_Init_thread: Other MPI error, error stack:
+MPIR_Init_thread(176): 
+MPID_Init(1416)......: 
+MPIR_pmi_init(167)...: PMI2_Job_GetId returned 14
+Traceback (most recent call last):
+  File "/home/k0107/k010725/neb_tutorial/au_diffusion/00_structure_prep/qe_test2/test.py", line 62, in <module>
+    calculator.calculate(atoms)
+  File "/home/k0107/k010725/apps/mambaforge/envs/catlearn/lib/python3.10/site-packages/ase/calculators/calculator.py", line 938, in calculate
+    raise CalculationFailed(msg)
+ase.calculators.calculator.CalculationFailed: Calculator "espresso" failed with command "pw.x -in espresso.pwi > espresso.pwo" failed in /home/k0107/k010725/neb_tutorial/au_diffusion/00_structure_prep/qe_test2 with error code 1
+========= Job finished at Sun Jan 28 14:06:47 JST 2024 ==========
