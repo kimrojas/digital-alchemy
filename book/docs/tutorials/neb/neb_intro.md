@@ -64,6 +64,7 @@ In this example, a Au atoms will diffuse from one hollow site to another hollow 
 :width: 200px
 ```
 
+---
 
 #### Input file
 
