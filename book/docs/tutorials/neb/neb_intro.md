@@ -23,7 +23,7 @@ There are two ways to generate a pathway:
 
 ### Interpolator
 
-For the purpose of this tutorial, we have a script that can generate a pathway for you. This script is called [`image_generator.py`](https://[www.google.com](https://github.com/kimrojas/digital-alchemy/tree/main/book/files/neb_tutorial/au_diffusion/00_idpp2espresso))
+For the purpose of this tutorial, we have a script that can generate a pathway for you. This script is called [`image_generator.py`](https://github.com/kimrojas/digital-alchemy/tree/main/book/files/neb_tutorial/au_diffusion/00_idpp2espresso)
 
 To use this script, you need to have the following:
 1. Initial image (ASE readable file)
