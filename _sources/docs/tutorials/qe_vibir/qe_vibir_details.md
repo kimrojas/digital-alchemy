@@ -7,10 +7,12 @@ First of all, why is this even needed? The current implementation of Infrared an
 
 The most time consuming part of the VIB/IR calculation is the evaluation of the energy, force and dipole moment. The algorithm produces 3N+1 displaced structure for the finite difference method and each of these structures are evaluated sequentially. This is not really a problem is we are only limited to 1 node. However, if we are in a supercomputer environment with access to many nodes, this is significantly limiting since we cannot scale up the evalutation step. In the MatSciToolkit workflow, the VIB/IR workflow is reorganized such that we can distribute the 3N+1 structures to different nodes and evaluate them in parallel. To do this, we simply use the job submission system (e.g. PBS, SLURM) to submit the 3N+1 jobs to the queue via job arrays.
 
-<!-- <img src="docs/tutorials/qe_vibir/irvib_workflow_diagram.png" alt="workflow" class="bg-primary mb-1" width="600px"> -->
-
-<img src="./irvib_workflow_diagram.png" alt="workflow" class="bg-primary mb-1" width="600px">
-
+```{image} ./irvib_workflow_diagram.png
+:alt: workflow
+:class: bg-primary mb-1
+:width: 600px
+:align: center
+```
 
 
 ## Dipole moment feature for the ASE-Espresso interface
