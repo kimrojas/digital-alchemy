@@ -14,6 +14,7 @@ parts:
     sections:
     - file: docs/tutorials/catlearn/catlearn-example-01-squid
   - file: docs/tutorials/neb/neb_intro
+  - file: docs/tutorials/qe_vibir/qe_vibir_index
   
 - caption: Recipes
   chapters:
