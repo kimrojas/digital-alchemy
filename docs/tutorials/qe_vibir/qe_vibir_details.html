@@ -434,7 +434,21 @@ document.write(`
 <section id="dipole-moment-feature-for-the-ase-espresso-interface">
 <h2>Dipole moment feature for the ASE-Espresso interface<a class="headerlink" href="#dipole-moment-feature-for-the-ase-espresso-interface" title="Link to this heading">#</a></h2>
 <p>Prior to development, the ASE-Espresso interface doesn’t have any capability to parse the dipole moment data. This is feature was added as seen in this <a class="reference external" href="https://gitlab.com/ase/ase/-/merge_requests/3023">merge request</a>. This is why there is a need to install a specific version or commit of ASE’s master branch.</p>
-<img src="./irvib_asedipole.PNG" alt="ase dipolmoment" class="bg-primary mb-1" width="600px"></section>
+<img src="./irvib_asedipole.PNG" alt="ase dipolmoment" class="bg-primary mb-1" width="600px"><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="c1"># get cwd</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/work/digital-alchemy/digital-alchemy/book/docs/tutorials/qe_vibir
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="post-processing-dipole-moment-data">
 <h2>Post-processing dipole moment data<a class="headerlink" href="#post-processing-dipole-moment-data" title="Link to this heading">#</a></h2>
 <section id="qe-s-1-dimensional-dipole-moment-calculation">
