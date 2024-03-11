@@ -17,6 +17,7 @@ parts:
   - file: docs/tutorials/qe_vibir/qe_vibir_index
     sections:
     - file: docs/tutorials/qe_vibir/qe_vibir_setup
+    - file: docs/tutorials/qe_vibir/qe_vibir_details
   
 - caption: Recipes
   chapters:
