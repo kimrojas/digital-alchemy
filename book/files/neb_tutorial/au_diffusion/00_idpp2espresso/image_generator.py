@@ -42,7 +42,10 @@ write(args.output + ".traj", images)
 
 print("Writing pathway to {}.neb-espresso".format(args.output))
 def print_positions(img, f):
-    cindex = img._get_constraints()[0].get_indices()
+    try:
+        cindex = img.get_constraint().get_indices()
+    except:
+        cindex = []
     for i, pos in enumerate(img.positions):
         f.write(f"  {img.get_chemical_symbols()[i]}    ")
         f.write(f"{pos[0]:>18.10f}  {pos[1]:>18.10f}  {pos[2]:>18.10f}")
