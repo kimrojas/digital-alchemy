@@ -20,6 +20,7 @@ parts:
     - file: docs/tutorials/qe_vibir/qe_vibir_details
     - file: docs/tutorials/qe_vibir/qe_vibir_dipolemoment
     - file: docs/tutorials/qe_vibir/qe_vibir_vibrational
+    - file: docs/tutorials/qe_vibir/qe_vibir_infrared
   
 - caption: Recipes
   chapters:
