@@ -4,7 +4,7 @@ The `get_dipole_moment` feature was recently added to the ASE-Espresso interface
 
 ## Example files
 
-A set of example files are provided in the `examples` folder of the [MatSciToolkit repository](https://github.com/kimrojas/MatSciToolKit/tree/main/tutorial). Specifically, the dipole moment calculation is demonstrated in the [`example_dipole_1`](https://github.com/kimrojas/MatSciToolKit/tree/main/tutorial/example_dipole_1) directory.
+A set of example files are provided in the `tutorial` folder of the [MatSciToolkit repository](https://github.com/kimrojas/MatSciToolKit/tree/main/tutorial). Specifically, the dipole moment calculation is demonstrated in the [`example_dipole_1`](https://github.com/kimrojas/MatSciToolKit/tree/main/tutorial/example_dipole_1) directory.
 
 
 ## Example files workflow
