@@ -10,7 +10,7 @@ Currently, only Quantum Espresso is supported. The code is still in development 
 
 ## Example files
 
-A set of example files are provided in the `tutorial` folder of the [MatSciToolkit repository](https://github.com/kimrojas/MatSciToolKit/tree/main/tutorial). Specifically, the dipole moment calculation is demonstrated in the [`example_ase_vib_1`](https://github.com/kimrojas/MatSciToolKit/tree/main/tutorial/example_ase_vib_1) directory.
+A set of example files are provided in the `tutorial` folder of the [MatSciToolkit repository](https://github.com/kimrojas/MatSciToolKit/tree/main/tutorial). Specifically, the vibrational analysis calculation is demonstrated in the [`example_ase_vib_1`](https://github.com/kimrojas/MatSciToolKit/tree/main/tutorial/example_ase_vib_1) directory.
 
 
 ## Example files workflow
