@@ -1,4 +1,23 @@
-# Vibrational analysis
+# Additonal notes
+
+## State of the code
+
+Currently, the code is still in development hence, the workflow is still a bit limiting. 
+
+This will slowly be expanded feature-wise and optimization wise. 
+
+## Helpful suggestions and comments
+
+If you have any suggestions or comments, please feel free to open an issue in the [MatSciToolkit repository](https://github.com/kimrojas/MatSciToolKit/issues). It will be very helpful to know which features are needed and which parts need to be optimized.
+
+## Future plans
+
+1. Cleaning up the code
+2. Better documentation
+
+
+
+
 
 The vibrational analysis interface simply leverages the job parallelization feature of the MatSciToolkit so we have a more reliable (less chance of failure) and faster calculation.
 
