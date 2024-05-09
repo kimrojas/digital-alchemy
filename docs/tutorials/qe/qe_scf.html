@@ -1,0 +1,788 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>SCF calculation &#8212; GOFEE Tutorial</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css?v=690d06d5" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/tutorials/qe/qe_scf';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="icon" href="../../../_static/icons8-atom-48.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Simple Optimization" href="qe_simple_optimization.html" />
+    <link rel="prev" title="Quantum Espresso with ASE" href="qe_index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../basic/intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="GOFEE Tutorial - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="GOFEE Tutorial - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../basic/intro.html">
+                    Digital Alchemy
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../catlearn/catlearn_intro.html">Catlearn</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../catlearn/catlearn-example-01-squid.html">SQUID: Example 01</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../neb/neb_intro.html">Nudge elastic band (NEB) method</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../qe_vibir/qe_vibir_index.html">MatSciToolkit VIB/IR analysis</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../qe_vibir/qe_vibir_setup.html">Initial setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qe_vibir/qe_vibir_details.html">How it works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qe_vibir/qe_vibir_dipolemoment.html">Dipole moment calculation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qe_vibir/qe_vibir_vibrational.html">Vibrational analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qe_vibir/qe_vibir_infrared.html">Infrared analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qe_vibir/qe_vibir_notes.html">Additonal notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="qe_index.html">Quantum Espresso with ASE</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">SCF calculation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qe_simple_optimization.html">Simple Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qe_dos.html">Density of States</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qe_bonus_add_adsorbate.html">Bonus topic: Add Adsorbate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qe_bonus_parallelization.html">Bonus topic: Parallelization</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Recipes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../recipes/conda/conda-index.html">CONDA</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../recipes/conda/conda-squid.html">CONDA - SQUID</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../recipes/qe/qe_index.html">Quantum Espresso</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../recipes/qe/qe-smith.html">Quantum Espresso - SMITH</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../recipes/catlearn/catlearn-index.html">Catlearn</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../recipes/catlearn/catlearn-squid.html">Catlearn - SQUID</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/kimrojas/digital-alchemy" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/kimrojas/digital-alchemy/issues/new?title=Issue%20on%20page%20%2Fdocs/tutorials/qe/qe_scf.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/docs/tutorials/qe/qe_scf.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>SCF calculation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slurm-script">SLURM script</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#script-content">Script content</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explanation">Explanation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-workflow">Python workflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Script content</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Explanation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structure-file">Structure file</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="scf-calculation">
+<h1>SCF calculation<a class="headerlink" href="#scf-calculation" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>In a simple self-consistent field (SCF) calculation, we get the (1) energy and (2) forces of the system. There are three (3) files that you need.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SLURM script</p></td>
+<td><p>Submits the job to the cluster with required resources and environment</p></td>
+</tr>
+<tr class="row-odd"><td><p>Python script</p></td>
+<td><p>Controls the workflow</p></td>
+</tr>
+<tr class="row-even"><td><p>Structure file</p></td>
+<td><p>Contains the atomic positions and lattice vectors of your system</p></td>
+</tr>
+</tbody>
+</table>
+<p>In this example, we will perform a SCF calculation on a simple HB sheet system. The tutorial files associated in this example can by found here: <a class="reference external" href="https://www.example.com">link to files</a></p>
+</section>
+<section id="slurm-script">
+<h2>SLURM script<a class="headerlink" href="#slurm-script" title="Link to this heading">#</a></h2>
+<p>The SLURM script is responsible for submitting the job to the cluster with the required resources and environment.</p>
+<section id="script-content">
+<h3>Script content<a class="headerlink" href="#script-content" title="Link to this heading">#</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please note that you need to adapt the environment variables and paths according to your specific setup.</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --partition=i8cpu</span>
+<span class="c1">#SBATCH --nodes=2</span>
+<span class="c1">#SBATCH --ntasks-per-node=128</span>
+<span class="c1">#SBATCH --time=00:30:00</span>
+<span class="c1">#SBATCH --job-name=calc</span>
+<span class="c1">#SBATCH --array=0</span>
+
+<span class="c1"># -- ENVIRONMENT --------------------------------------------------------------</span>
+<span class="nb">source</span><span class="w"> </span>~/.bashrc
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>oneapi_compiler/2023.0.0<span class="w"> </span>oneapi_mkl/2023.0.0<span class="w"> </span>oneapi_mpi/2023.0.0
+module<span class="w"> </span>list
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">FI_PROVIDER</span><span class="o">=</span>psm3
+<span class="nb">ulimit</span><span class="w"> </span>-s<span class="w"> </span>unlimited
+
+<span class="c1"># Activate QE environment ------------------------------------------------------</span>
+<span class="c1"># export PATH=&#39;/home/k0107/k010725/apps/qe/QE/src/qe-7.2/bin&#39;:$PATH</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$HOME</span>/apps/qe/QE/src/qe-7.2/bin:<span class="nv">$PATH</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">ESPRESSO_PSEUDO</span><span class="o">=</span><span class="nv">$HOME</span>/apps/qe/QE/pseudo/gbrv/pbe
+<span class="nb">export</span><span class="w"> </span><span class="nv">ESPRESSO_TMPDIR</span><span class="o">=</span>TMPDIR
+<span class="nb">export</span><span class="w"> </span><span class="nv">ESPRESSO_PROFILE</span><span class="o">=</span><span class="s1">&#39;srun pw.x -nk 2&#39;</span>
+
+<span class="c1"># Activate Python environment --------------------------------</span>
+mamba<span class="w"> </span>activate<span class="w"> </span>qe_tutorial
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;CONDA ENV: &quot;</span><span class="w"> </span><span class="nv">$CONDA_PREFIX</span>
+
+<span class="c1"># -- EXECUTION ----------------------------------------------------------------</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;========= Job started  at `date` ==========&quot;</span>
+
+python<span class="w"> </span>run_scf.py
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;========= Job finished at `date` ==========&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="explanation">
+<h3>Explanation<a class="headerlink" href="#explanation" title="Link to this heading">#</a></h3>
+<p>Here is an explanation of the important parameters and environment settings used in the script:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--partition=i8cpu</span></code>
+: Specifies the partition on the cluster where the job will run. In this case, it is set to <code class="docutils literal notranslate"><span class="pre">i8cpu</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--nodes=2</span></code>
+: Specifies the number of nodes requested for the job. In this case, it is set to <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--ntasks-per-node=128</span></code>
+: Specifies the number of tasks per node. In this case, it is set to <code class="docutils literal notranslate"><span class="pre">128</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--time=00:30:00</span></code>
+: Specifies the maximum time for the job to run. In this case, it is set to <code class="docutils literal notranslate"><span class="pre">30</span></code> minutes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--job-name=calc</span></code>
+: Specifies the name of the job. In this case, it is set to <code class="docutils literal notranslate"><span class="pre">calc</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--array=0</span></code>
+: Specifies the job array index. In this case, it is set to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
+</ul>
+<p>The following <strong>environment settings</strong> are also important:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">~/.bashrc</span></code>
+: Sources the <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> file to load any necessary environment variables.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">purge</span></code>
+: Removes all loaded modules from the environment.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">oneapi_compiler/2023.0.0</span> <span class="pre">oneapi_mkl/2023.0.0</span> <span class="pre">oneapi_mpi/2023.0.0</span></code>
+: Loads the specified modules for the Intel oneAPI compiler, MKL, and MPI.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">FI_PROVIDER=psm3</span></code>
+: Sets the fabric interface provider to <code class="docutils literal notranslate"><span class="pre">psm3</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ulimit</span> <span class="pre">-s</span> <span class="pre">unlimited</span></code>
+: Sets the stack size limit to unlimited.</p></li>
+</ul>
+<p>The following <strong>Quantum Espresso (QE) environment</strong> settings are important for the job:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">PATH=$HOME/apps/qe/QE/src/qe-7.2/bin:$PATH</span></code>
+: Adds the QE binary directory to the <code class="docutils literal notranslate"><span class="pre">PATH</span></code> environment variable.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">ESPRESSO_PSEUDO=$HOME/apps/qe/QE/pseudo/gbrv/pbe</span></code>
+: Sets the path to the QE pseudopotential files.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">ESPRESSO_TMPDIR=TMPDIR</span></code>
+: Sets the temporary directory for QE.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">ESPRESSO_PROFILE='srun</span> <span class="pre">pw.x</span> <span class="pre">-nk</span> <span class="pre">2'</span></code>
+: Sets the QE profile for parallel execution.</p></li>
+</ul>
+<p>Finally, the script activates the <strong>Python environment</strong> and executes the <code class="docutils literal notranslate"><span class="pre">run_scf.py</span></code> script.</p>
+</section>
+</section>
+<section id="python-workflow">
+<h2>Python workflow<a class="headerlink" href="#python-workflow" title="Link to this heading">#</a></h2>
+<p>The Python script controls the workflow of the SCF calculation. It sets up the input parameters, runs the calculation, and analyzes the results.</p>
+<section id="id1">
+<h3>Script content<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">ase.calculators.espresso</span> <span class="kn">import</span> <span class="n">Espresso</span><span class="p">,</span> <span class="n">EspressoProfile</span>
+<span class="kn">from</span> <span class="nn">ase.io</span> <span class="kn">import</span> <span class="n">read</span>
+
+<span class="c1"># 1. INPUT STRUCTURE FILE</span>
+<span class="n">atm</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="s2">&quot;pristine_vdw.vasp&quot;</span><span class="p">)</span> <span class="c1"># Read the input structure file</span>
+
+<span class="c1"># 2. INPUT PARAMETERS</span>
+<span class="c1"># 2.a - KPOINTS GRID</span>
+<span class="n">kpts</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># 2.b - PSEUDOPOTENTIALS</span>
+<span class="n">pseudopotentials</span> <span class="o">=</span> <span class="p">{</span> 
+    <span class="s2">&quot;H&quot;</span><span class="p">:</span> <span class="s2">&quot;h_pbe_v1.4.uspp.F.UPF&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;N&quot;</span><span class="p">:</span> <span class="s2">&quot;n_pbe_v1.2.uspp.F.UPF&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="s2">&quot;b_pbe_v1.4.uspp.F.UPF&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1"># 2.c - PW PARAMETERS</span>
+<span class="n">input_data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;control&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;tprnfor&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="c1"># -- Print forces</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;system&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;ecutwfc&quot;</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span> 
+        <span class="s2">&quot;ecutrho&quot;</span><span class="p">:</span> <span class="mi">480</span><span class="p">,</span>
+        <span class="s2">&quot;occupations&quot;</span><span class="p">:</span> <span class="s2">&quot;smearing&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;smearing&quot;</span><span class="p">:</span> <span class="s2">&quot;gaussian&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;degauss&quot;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span>
+        <span class="s2">&quot;input_dft&quot;</span><span class="p">:</span> <span class="s2">&quot;vdw-df2-b86r&quot;</span><span class="p">,</span> <span class="c1"># -- Use the rev-vdW-DF2 functional</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;electrons&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;electron_maxstep&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+        <span class="s2">&quot;conv_thr&quot;</span><span class="p">:</span> <span class="mf">1.0e-09</span><span class="p">,</span>
+        <span class="s2">&quot;mixing_beta&quot;</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span>
+        <span class="s2">&quot;mixing_mode&quot;</span><span class="p">:</span> <span class="s2">&quot;plain&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;diagonalization&quot;</span><span class="p">:</span> <span class="s2">&quot;rmm-davidson&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="c1"># 3. CALCULATOR</span>
+<span class="n">calc</span> <span class="o">=</span> <span class="n">Espresso</span><span class="p">(</span>
+    <span class="n">kpts</span><span class="o">=</span><span class="n">kpts</span><span class="p">,</span>
+    <span class="n">pseudopotentials</span><span class="o">=</span><span class="n">pseudopotentials</span><span class="p">,</span>
+    <span class="n">input_data</span><span class="o">=</span><span class="n">input_data</span><span class="p">,</span>
+    <span class="n">directory</span><span class="o">=</span><span class="s2">&quot;DFT&quot;</span><span class="p">,</span>
+    <span class="n">profile</span><span class="o">=</span><span class="n">EspressoProfile</span><span class="p">(</span><span class="n">argv</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;ESPRESSO_PROFILE&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()),</span>
+<span class="p">)</span>
+<span class="n">atm</span><span class="o">.</span><span class="n">set_calculator</span><span class="p">(</span><span class="n">calc</span><span class="p">)</span>
+
+<span class="c1"># 4. RUN CALCULATION</span>
+
+<span class="n">energy</span> <span class="o">=</span> <span class="n">atm</span><span class="o">.</span><span class="n">get_potential_energy</span><span class="p">()</span>  <span class="c1"># -- Run the calculation (will return energy)</span>
+<span class="n">forces</span> <span class="o">=</span> <span class="n">atm</span><span class="o">.</span><span class="n">get_forces</span><span class="p">()</span>  <span class="c1"># -- get the forces</span>
+
+<span class="c1"># 5. SAVE OUTPUT</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Energy: &quot;</span><span class="p">,</span> <span class="n">energy</span><span class="p">,</span> <span class="s2">&quot;eV&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Forces (min,max): &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">forces</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">forces</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3>Explanation<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Read the input structure file named “pristine_vdw.vasp” using the <code class="docutils literal notranslate"><span class="pre">read</span></code> function from <code class="docutils literal notranslate"><span class="pre">ase.io</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Set up input parameters for the SCF calculation, including k-points grid, pseudopotentials, and various parameters for the electronic structure calculation</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Create an instance of the <code class="docutils literal notranslate"><span class="pre">Espresso</span></code> calculator from <code class="docutils literal notranslate"><span class="pre">ase.calculators.espresso</span></code> and attach it to the atomic structure</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Run the SCF calculation by calling the <code class="docutils literal notranslate"><span class="pre">get_potential_energy</span></code> method on the atomic structure</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>Calculate the forces on the atoms using the <code class="docutils literal notranslate"><span class="pre">get_forces</span></code> method</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Print the energy and forces of the system</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="structure-file">
+<h2>Structure file<a class="headerlink" href="#structure-file" title="Link to this heading">#</a></h2>
+<p>The structure file contains the atomic positions and lattice vectors of your system. In this example, the structure file is named “pristine_vdw.vasp” and is in the VASP POSCAR format.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/tutorials/qe"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="qe_index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Quantum Espresso with ASE</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="qe_simple_optimization.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Simple Optimization</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slurm-script">SLURM script</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#script-content">Script content</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explanation">Explanation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-workflow">Python workflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Script content</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Explanation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structure-file">Structure file</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Kurt Rojas
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
