@@ -1,0 +1,7 @@
+Currently Loaded Modulefiles:
+ 1) oneapi_compiler/2023.0.0   2) oneapi_mkl/2023.0.0   3) oneapi_mpi/2023.0.0  
+CONDA ENV:  /home/k0107/k010725/apps/mambaforge/envs/qe_tutorial
+========= Job started  at Tue May  7 22:13:53 JST 2024 ==========
+Energy:  -3288.025008111035 eV
+Forces (min,max):  0.0008802038272440346 0.003131038758952428
+========= Job finished at Tue May  7 22:16:08 JST 2024 ==========
