@@ -11,7 +11,7 @@ In a simple self-consistent field (SCF) calculation, we get the (1) energy and (
 |Python script | Controls the workflow|
 |Structure file | Contains the atomic positions and lattice vectors of your system|
 
-In this example, we will perform a SCF calculation on a simple HB sheet system. The tutorial files associated in this example can by found here: [link to files](https://www.example.com)
+In this example, we will perform a SCF calculation on a simple HB sheet system. The tutorial files associated in this example can by found here: [link to files](https://github.com/kimrojas/digital-alchemy/tree/main/book/files/qe_tutorial/01_scf)
 
 
 ## SLURM script
