@@ -22,7 +22,14 @@ parts:
     - file: docs/tutorials/qe_vibir/qe_vibir_vibrational
     - file: docs/tutorials/qe_vibir/qe_vibir_infrared
     - file: docs/tutorials/qe_vibir/qe_vibir_notes
-  
+  - file: docs/tutorials/qe/qe_index
+    sections:
+    - file: docs/tutorials/qe/qe_scf
+    - file: docs/tutorials/qe/qe_simple_optimization
+    - file: docs/tutorials/qe/qe_dos
+    - file: docs/tutorials/qe/qe_bonus_add_adsorbate
+    - file: docs/tutorials/qe/qe_bonus_parallelization
+
 - caption: Recipes
   chapters:
   - file: docs/recipes/conda/conda-index

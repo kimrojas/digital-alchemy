@@ -10,8 +10,6 @@ then
 	cont='y'
 fi
 
-
-
 if [ $cont = 'n' ] 
 then
 	exit
